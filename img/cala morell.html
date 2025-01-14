@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<!-- saved from url=(0085)https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#* -->
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ca" data-lt-installed="true"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script type="text/javascript" async="" src="./cala morell_files/analytics.js"></script><script type="text/javascript" async="" src="./cala morell_files/js"></script><script type="text/javascript" async="" src="./cala morell_files/js(1)"></script><script src="./cala morell_files/sdk.js" async="" crossorigin="anonymous"></script><script id="facebook-jssdk" src="./cala morell_files/sdk(1).js"></script><script async="" src="./cala morell_files/js(2)"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-GBJH3C2SB5');
+    </script>
+    <title>
+	Menorca Talaiòtica - Poblado costero del coll de Cala Morell
+</title><link id="AlternateLinkCa" rel="alternate" hreflang="ca" href="https://www.menorcatalayotica.info/contingut.aspx?idpub=10699&amp;idioma=1"><link id="AlternateLinkEs" rel="alternate" hreflang="es" href="https://www.menorcatalayotica.info/contingut.aspx?idpub=10699&amp;idioma=2"><link id="AlternateLinkEn" rel="alternate" hreflang="en" href="https://www.menorcatalayotica.info/contingut.aspx?idpub=10699&amp;idioma=3"><link id="AlternateLink" rel="alternate" hreflang="x-default" href="https://www.menorcatalayotica.info/contingut.aspx?idpub=10699&amp;idioma=1"><link id="Canonical" rel="canonical" href="https://www.menorcatalayotica.info/contingut.aspx?idpub=10699"><meta name="description" content="En Cala Morell, urbanización de la costa norte de Ciutadella, se emplaza uno de los yacimientos arqueológicos más espectaculares de la isla. Lo conforman una gran..."><meta property="og:title" content="Poblado costero del coll de Cala Morell"><meta property="og:type" content="article"><meta property="og:image" content="https://www.menorcatalayotica.info/documents/Imatges/10697img13.jpg"><meta property="og:url" content="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699"><meta property="og:description" content="En Cala Morell, urbanización de la costa norte de Ciutadella, se emplaza uno de los yacimientos arqueológicos más espectaculares de la isla. Lo conforman una gran..."><meta property="og:site_name" content="Menorca Talaiòtica"><meta name="twitter:card" content="summary"><meta name="twitter:title" content="Poblado costero del coll de Cala Morell"><meta name="twitter:description" content="En Cala Morell, urbanización de la costa norte de Ciutadella, se emplaza uno de los yacimientos arqueológicos más espectaculares de la isla. Lo conforman una gran..."><meta name="twitter:url" content="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699"><meta name="twitter:image" content="https://www.menorcatalayotica.info/documents/Imatges/10697img13.jpg"><meta name="viewport" content="width=device-width"><link rel="shortcut icon" href="https://www.menorcatalayotica.info/imas/general/favicon.png" type="image/x-icon"><link href="./cala morell_files/General.css" rel="stylesheet" type="text/css"><link href="./cala morell_files/plantillas.css" rel="stylesheet" type="text/css">
+    <script src="./cala morell_files/jquery-3.3.1.min.js" type="text/javascript"></script>
+    <script src="./cala morell_files/menu.js" type="text/javascript"></script>
+    <script src="./cala morell_files/load.js" type="text/javascript"></script>
+    <link href="./cala morell_files/menu.css" rel="stylesheet" type="text/css"><link href="./cala morell_files/media.css" rel="stylesheet" type="text/css">
+    
+    <script type="text/javascript" src="./cala morell_files/ol.js"></script>
+    
+    <script type="text/javascript">
+        var map, view, projection, feature, projectionExtent, size, parser, resolutions, matrixIds, iniLon, iniLat;
+        var layerMonumentsActivo = true;
+        var layerAltresActivo = true;
+        var layerOficinesActivo = true;
+        var vsMonuments = new ol.source.Vector({});
+        var vsAltres = new ol.source.Vector({});
+        var vsOficines = new ol.source.Vector({});
+        var vsRuta = new ol.source.Vector({});
+        function setStyle(feature) {
+            var srcImage = feature.ico.toString();
+            if (map.getView().getZoom() >= 6) {
+                var styleMonuments = new ol.style.Style({
+                    text: new ol.style.Text({
+                        font: '12px helvetica,sans-serif',
+                        text: feature.nom.toString(),
+                        offsetY: 20,
+                        fill: new ol.style.Fill({
+                            color: '#000'
+                        }),
+                        stroke: new ol.style.Stroke({
+                            color: '#fff',
+                            width: 4
+                        })
+                    }),
+                    image: new ol.style.Icon(({
+                        anchor: [0.5, 1],
+                        src: srcImage
+                    }))
+                });
+            } else {
+                var styleMonuments = new ol.style.Style({
+                    image: new ol.style.Icon(({
+                        anchor: [0.5, 1],
+                        src: srcImage
+                    }))
+                });
+            }
+            return [styleMonuments];
+        }
+        var layerMonuments = new ol.layer.Vector({
+            title: 'Monuments',
+            source: vsMonuments,
+            visible: true,
+            style: setStyle
+        });
+
+        var layerAltres = new ol.layer.Vector({
+            title: 'Altres',
+            source: vsAltres,
+            visible: true,
+            style: setStyle
+        });
+
+        var layerOficines = new ol.layer.Vector({
+            title: 'Oficines Plastic',
+            source: vsOficines,
+            visible: true,
+            style: setStyle
+        });
+
+        var styleRuta = new ol.style.Style({
+            stroke: new ol.style.Stroke({
+                color: [255, 0, 0, 0.5],
+                width: 5
+            }),
+        });
+
+        var layerRuta = new ol.layer.Vector({
+            title: 'Ruta',
+            source: vsRuta,
+            visible: true,
+            style: styleRuta
+        });
+
+        var capes = new ol.layer.Group({
+            title: 'Overlays',
+            layers: [
+                layerMonuments, layerAltres, layerOficines, layerRuta
+            ],
+        });
+
+        var wktFormat = new ol.format.WKT();
+
+        function iniMapa(lon, lat, zoom) {
+            projection = ol.proj.get('EPSG:3857');
+            projectionExtent = projection.getExtent();
+            size = ol.extent.getWidth(projectionExtent) / 256;
+            parser = new ol.format.WMTSCapabilities();
+            resolutions = new Array(22);
+            matrixIds = new Array(22);
+            for (var z = 0; z < 22; ++z) {
+                resolutions[z] = size / Math.pow(2, z);
+                matrixIds[z] = 'EPSG:3857:' + z;
+            }
+            view = new ol.View({
+                center: ol.proj.transform([lon, lat], 'EPSG:4326', 'EPSG:3857'),
+                projection: projection,
+                zoom: zoom
+            })
+
+            map = new ol.Map({
+                target: 'map',
+                layers: [
+                    new ol.layer.Tile({
+                        extent: projectionExtent,
+                        type: 'base',
+                        visible: true,
+                        title: 'Base IDE menorca',
+                        source: new ol.source.WMTS({
+                            url: 'https://ide.cime.es/geoserver2/gwc/service/wmts',
+                            layer: 'base_referencia:base_referencia',
+                            matrixSet: 'EPSG:3857',
+                            format: 'image/png8',
+                            projection: projection,
+                            tileGrid: new ol.tilegrid.WMTS({
+                                origin: ol.extent.getTopLeft(projectionExtent),
+                                resolutions: resolutions,
+                                matrixIds: matrixIds
+                            }),
+                            attributions: '© IDE Menorca'
+                        })
+                    }), capes
+                ],
+                view: view
+            });
+            feature = wktFormat.readFeature("POINT(" + lon + " " + lat + ")", { dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' });
+            feature.nom = "";
+            feature.ico = "/imas/general/markSelect.png";
+            feature.lon = feature.getGeometry().flatCoordinates[0];
+            feature.lat = feature.getGeometry().flatCoordinates[1];
+            feature.zoom = "16";
+            vsMonuments.addFeature(feature);
+            map.interactions.array_[7].values_.active = false;
+        }
+        function findRoute(flat, flon, tlat, tlon) {
+            //url = "/proxy.ashx?http://www.yournavigation.org/api/1.0/gosmore.php?format=kml#flat=39.8895#flon=4.2639#tlat=39.8715#tlon=4.2069#v=motorcar#fast=1#layer=mapnik#instructons=1";
+            //url = "/proxy.aspx?flat=" + flat + "&flon=" + flon + "&tlat=" + tlat + "&tlon=" + tlon;
+            url = "/proxy.ashx?http://www.yournavigation.org/api/1.0/gosmore.php?format=kml&flat=" + flat + "&flon=" + flon + "&tlat=" + tlat + "&tlon=" + tlon + "&v=motorcar&fast=1&layer=mapnik";
+            console.log(url);
+            $.ajax({
+                url: url,
+                cache: false,
+                dataType: 'xml',
+                success: function (xml) {
+                    var kmlCoordinates = $(xml).find('coordinates').text();
+                    try {
+                        var linestring_feature = new ol.Feature({});
+                        var matCoord = new Array();
+                        matKmlCoordinates = String(kmlCoordinates).split("\n");
+
+                        for (var i = 0; i < matKmlCoordinates.length; i++) {
+                            try {
+                                var coords = matKmlCoordinates[i].split(",");
+                                if ((isNaN(coords[0]) == false) && (isNaN(coords[1]) == false)) {
+                                    var point_geom = new ol.geom.Point([coords[0], coords[1]]);
+                                }
+                                matCoord[i] = ol.proj.transform([parseFloat(point_geom.flatCoordinates[0].trim()), parseFloat(point_geom.flatCoordinates[1].trim())], 'EPSG:4326', 'EPSG:3857');
+                            }
+                            catch (Err)
+                            { }
+                        }
+                        
+
+                        linestring_feature = new ol.Feature({
+                            geometry: new ol.geom.LineString(matCoord)
+                        });
+                        vsRuta.addFeature(linestring_feature);
+
+                        const extent = linestring_feature.getGeometry().getExtent()
+                        map.getView().fit(extent);
+                    }
+                    catch (Err) {
+                        var errMsg = Err.toString();
+                    }
+                },
+                error: function (data) {
+                    //$.mobile.hidePageLoadingMsg('Searching');
+                },
+                timeout: 10000
+            });
+        }
+        var localizar = function (varParquing) {
+            tryAPIGeolocation(varParquing);
+        };
+        var apiGeolocationSuccess = function (position, varParquing) {
+            showPosition(position, varParquing);
+        };
+        var tryAPIGeolocation = function (varParquing) {
+            $.post("https://www.googleapis.com/geolocation/v1/geolocate?key=AIzaSyAGhsd6DYwDBY8SyJ8T-2jdtD2joxlxIHA", function (success) {
+                apiGeolocationSuccess({ coords: { latitude: success.location.lat, longitude: success.location.lng } }, varParquing);
+            })
+            .fail(function (err) {
+                alert("API Geolocation error! \n\n" + err);
+            });
+        };
+        var feature1, feature2;
+        function showPosition(position, varParquing) {
+            feature1 = wktFormat.readFeature("POINT(" + position.coords.longitude + " " + position.coords.latitude + ")", { dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' });
+            feature1.nom = "";
+            feature1.ico = "/imas/general/markSelect.png";
+            feature1.lon = feature1.getGeometry().flatCoordinates[0];
+            feature1.lat = feature1.getGeometry().flatCoordinates[1];
+            feature1.zoom = "16";
+            vsMonuments.addFeature(feature1);
+            feature2 = wktFormat.readFeature("POINT(" + iniLon + " " + iniLat + ")", { dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857' });
+            feature2.nom = "";
+            if (varParquing = 1) {
+                feature2.ico = "/imas/general/markParquing.png";
+            } else {
+                feature2.ico = "/imas/general/markSelect.png";
+            }
+            feature2.lon = feature2.getGeometry().flatCoordinates[0];
+            feature2.lat = feature2.getGeometry().flatCoordinates[1];
+            feature2.zoom = "16";
+            vsMonuments.addFeature(feature2);
+
+            var lonLat = ol.proj.transform([feature1.getGeometry().flatCoordinates[0], feature1.getGeometry().flatCoordinates[1]], 'EPSG:3857', 'EPSG:4326');
+            var iniLonLat = ol.proj.transform([feature2.getGeometry().flatCoordinates[0], feature2.getGeometry().flatCoordinates[1]], 'EPSG:3857', 'EPSG:4326');
+            //alert(iniLonLat[0]);
+
+            findRoute(lonLat[1], lonLat[0], iniLonLat[1], iniLonLat[0]);
+        }
+        
+    </script>    
+    
+    <style>
+    .hide{display:none}
+    #DIVdreta .hide{display:block}
+    </style>
+
+    <!--[if IE 6]>
+    <link href="/Stils/ie.css" rel="stylesheet" type="text/css" />
+    <![endif]-->
+<style type="text/css" data-fbcssmodules="css:fb.css.base css:fb.css.dialog css:fb.css.iframewidget">.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_hidden{position:absolute;top:-10000px;z-index:10001}.fb_reposition{overflow:hidden;position:relative}.fb_invisible{display:none}.fb_reset{background:none;border:0px;border-spacing:0;color:#000;cursor:auto;direction:ltr;font-family:'lucida grande', tahoma, verdana, arial, sans-serif;font-size:11px;font-style:normal;font-variant:normal;font-weight:normal;letter-spacing:normal;line-height:1;margin:0;overflow:visible;padding:0;text-align:left;text-decoration:none;text-indent:0;text-shadow:none;text-transform:none;visibility:visible;white-space:normal;word-spacing:normal}.fb_reset>div{overflow:hidden}@keyframes fb_transform{from{opacity:0;transform:scale(.95)}to{opacity:1;transform:scale(1)}}.fb_animate{animation:fb_transform .3s forwards}
+.fb_dialog{background:rgba(82, 82, 82, .7);position:absolute;top:-10000px;z-index:10001}.fb_dialog_advanced{border-radius:8px;padding:10px}.fb_dialog_content{background:#fff;color:#373737}.fb_dialog_close_icon{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 0 transparent;cursor:pointer;display:block;height:15px;position:absolute;right:18px;top:17px;width:15px}.fb_dialog_mobile .fb_dialog_close_icon{left:5px;right:auto;top:5px}.fb_dialog_padding{background-color:transparent;position:absolute;width:1px;z-index:-1}.fb_dialog_close_icon:hover{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -15px transparent}.fb_dialog_close_icon:active{background:url(https://connect.facebook.net/rsrc.php/v4/yq/r/IE9JII6Z1Ys.png) no-repeat scroll 0 -30px transparent}.fb_dialog_iframe{line-height:0}.fb_dialog_content .dialog_title{background:#6d84b4;border:1px solid #365899;color:#fff;font-size:14px;font-weight:bold;margin:0}.fb_dialog_content .dialog_title>span{background:url(https://connect.facebook.net/rsrc.php/v4/yd/r/Cou7n-nqK52.gif) no-repeat 5px 50%;float:left;padding:5px 0 7px 26px}body.fb_hidden{height:100%;left:0px;margin:0px;overflow:visible;position:absolute;top:-10000px;transform:none;width:100%}.fb_dialog.fb_dialog_mobile.loading{background:url(https://connect.facebook.net/rsrc.php/v4/ya/r/3rhSv5V8j3o.gif) white no-repeat 50% 50%;min-height:100%;min-width:100%;overflow:hidden;position:absolute;top:0;z-index:10001}.fb_dialog.fb_dialog_mobile.loading.centered{background:none;height:auto;min-height:initial;min-width:initial;width:auto}.fb_dialog.fb_dialog_mobile.loading.centered #fb_dialog_loader_spinner{width:100%}.fb_dialog.fb_dialog_mobile.loading.centered .fb_dialog_content{background:none}.loading.centered #fb_dialog_loader_close{clear:both;color:#fff;display:block;font-size:18px;padding-top:20px}#fb-root #fb_dialog_ipad_overlay{background:rgba(0, 0, 0, .4);bottom:0;left:0;min-height:100%;position:absolute;right:0;top:0;width:100%;z-index:10000}#fb-root #fb_dialog_ipad_overlay.hidden{display:none}.fb_dialog.fb_dialog_mobile.loading iframe{visibility:hidden}.fb_dialog_mobile .fb_dialog_iframe{position:sticky;top:0}.fb_dialog_content .dialog_header{background:linear-gradient(from(#738aba), to(#2c4987));border-bottom:1px solid;border-color:#043b87;box-shadow:white 0px 1px 1px -1px inset;color:#fff;font:bold 14px Helvetica, sans-serif;text-overflow:ellipsis;text-shadow:rgba(0, 30, 84, .296875) 0px -1px 0px;vertical-align:middle;white-space:nowrap}.fb_dialog_content .dialog_header table{height:43px;width:100%}.fb_dialog_content .dialog_header td.header_left{font-size:12px;padding-left:5px;vertical-align:middle;width:60px}.fb_dialog_content .dialog_header td.header_right{font-size:12px;padding-right:5px;vertical-align:middle;width:60px}.fb_dialog_content .touchable_button{background:linear-gradient(from(#4267B2), to(#2a4887));background-clip:padding-box;border:1px solid #29487d;border-radius:3px;display:inline-block;line-height:18px;margin-top:3px;max-width:85px;padding:4px 12px;position:relative}.fb_dialog_content .dialog_header .touchable_button input{background:none;border:none;color:#fff;font:bold 12px Helvetica, sans-serif;margin:2px -12px;padding:2px 6px 3px 6px;text-shadow:rgba(0, 30, 84, .296875) 0px -1px 0px}.fb_dialog_content .dialog_header .header_center{color:#fff;font-size:16px;font-weight:bold;line-height:18px;text-align:center;vertical-align:middle}.fb_dialog_content .dialog_content{background:url(https://connect.facebook.net/rsrc.php/v4/y9/r/jKEcVPZFk-2.gif) no-repeat 50% 50%;border:1px solid #4a4a4a;border-bottom:0;border-top:0;height:150px}.fb_dialog_content .dialog_footer{background:#f5f6f7;border:1px solid #4a4a4a;border-top-color:#ccc;height:40px}#fb_dialog_loader_close{float:left}.fb_dialog.fb_dialog_mobile .fb_dialog_close_icon{visibility:hidden}#fb_dialog_loader_spinner{animation:rotateSpinner 1.2s linear infinite;background-color:transparent;background-image:url(https://connect.facebook.net/rsrc.php/v4/yD/r/t-wz8gw1xG1.png);background-position:50% 50%;background-repeat:no-repeat;height:24px;width:24px}@keyframes rotateSpinner{0%{transform:rotate(0deg)}100%{transform:rotate(360deg)}}
+.fb_iframe_widget{display:inline-block;position:relative}.fb_iframe_widget span{display:inline-block;position:relative;text-align:justify}.fb_iframe_widget iframe{position:absolute}.fb_iframe_widget_fluid_desktop,.fb_iframe_widget_fluid_desktop span,.fb_iframe_widget_fluid_desktop iframe{max-width:100%}.fb_iframe_widget_fluid_desktop iframe{min-width:220px;position:relative}.fb_iframe_widget_lift{z-index:1}.fb_iframe_widget_fluid{display:inline}.fb_iframe_widget_fluid span{width:100%}</style></head>
+<body id="body" onload="load(&#39;&#39;,&#39;2&#39;)">
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+            appId: '1994761107454524',
+          xfbml      : true,
+          version    : 'v2.8'
+        });
+        FB.AppEvents.logPageView();
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/es_ES/sdk.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <form method="post" action="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTk2NjQyMjUwMQ9kFgJmD2QWBAIBD2QWEAICDxYCHgRocmVmBUZodHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL2NvbnRpbmd1dC5hc3B4P2lkcHViPTEwNjk5JmlkaW9tYT0xZAIDDxYCHwAFRmh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vY29udGluZ3V0LmFzcHg/aWRwdWI9MTA2OTkmaWRpb21hPTJkAgQPFgIfAAVGaHR0cHM6Ly93d3cubWVub3JjYXRhbGF5b3RpY2EuaW5mby9jb250aW5ndXQuYXNweD9pZHB1Yj0xMDY5OSZpZGlvbWE9M2QCBQ8WAh8ABUZodHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL2NvbnRpbmd1dC5hc3B4P2lkcHViPTEwNjk5JmlkaW9tYT0xZAIGDxYCHwAFPWh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vY29udGluZ3V0LmFzcHg/aWRwdWI9MTA2OTlkAgcPFgIeBFRleHQF4AE8bWV0YSBuYW1lPSJkZXNjcmlwdGlvbiIgY29udGVudD0iRW4gQ2FsYSBNb3JlbGwsIHVyYmFuaXphY2kmb2FjdXRlO24gZGUgbGEgY29zdGEgbm9ydGUgZGUgQ2l1dGFkZWxsYSwgc2UgZW1wbGF6YSB1bm8gZGUgbG9zIHlhY2ltaWVudG9zIGFycXVlb2wmb2FjdXRlO2dpY29zIG0mYWFjdXRlO3MgZXNwZWN0YWN1bGFyZXMgZGUgbGEgaXNsYS4gTG8gY29uZm9ybWFuIHVuYSBncmFuLi4uIiAvPmQCCA8WAh8BBb8JPG1ldGEgcHJvcGVydHk9Im9nOnRpdGxlIiBjb250ZW50PSJQb2JsYWRvIGNvc3Rlcm8gZGVsIGNvbGwgZGUgQ2FsYSBNb3JlbGwiPjxtZXRhIHByb3BlcnR5PSJvZzp0eXBlIiBjb250ZW50PSJhcnRpY2xlIj48bWV0YSBwcm9wZXJ0eT0ib2c6aW1hZ2UiIGNvbnRlbnQ9Imh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZG9jdW1lbnRzL0ltYXRnZXMvMTA2OTdpbWcxMy5qcGciPjxtZXRhIHByb3BlcnR5PSJvZzp1cmwiIGNvbnRlbnQ9Imh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZXMvUG9ibGFkb19jb3N0ZXJvX2RlbF9jb2xsX2RlX0NhbGFfTW9yZWxsLzEwNjk5Ij48bWV0YSBwcm9wZXJ0eT0ib2c6ZGVzY3JpcHRpb24iIGNvbnRlbnQ9IkVuIENhbGEgTW9yZWxsLCB1cmJhbml6YWNpJm9hY3V0ZTtuIGRlIGxhIGNvc3RhIG5vcnRlIGRlIENpdXRhZGVsbGEsIHNlIGVtcGxhemEgdW5vIGRlIGxvcyB5YWNpbWllbnRvcyBhcnF1ZW9sJm9hY3V0ZTtnaWNvcyBtJmFhY3V0ZTtzIGVzcGVjdGFjdWxhcmVzIGRlIGxhIGlzbGEuIExvIGNvbmZvcm1hbiB1bmEgZ3Jhbi4uLiI+PG1ldGEgcHJvcGVydHk9Im9nOnNpdGVfbmFtZSIgY29udGVudD0iTWVub3JjYSBUYWxhacOydGljYSI+PG1ldGEgbmFtZT0idHdpdHRlcjpjYXJkIiBjb250ZW50PSJzdW1tYXJ5IiAvPjxtZXRhIG5hbWU9InR3aXR0ZXI6dGl0bGUiIGNvbnRlbnQ9IlBvYmxhZG8gY29zdGVybyBkZWwgY29sbCBkZSBDYWxhIE1vcmVsbCIgLz48bWV0YSBuYW1lPSJ0d2l0dGVyOmRlc2NyaXB0aW9uIiBjb250ZW50PSJFbiBDYWxhIE1vcmVsbCwgdXJiYW5pemFjaSZvYWN1dGU7biBkZSBsYSBjb3N0YSBub3J0ZSBkZSBDaXV0YWRlbGxhLCBzZSBlbXBsYXphIHVubyBkZSBsb3MgeWFjaW1pZW50b3MgYXJxdWVvbCZvYWN1dGU7Z2ljb3MgbSZhYWN1dGU7cyBlc3BlY3RhY3VsYXJlcyBkZSBsYSBpc2xhLiBMbyBjb25mb3JtYW4gdW5hIGdyYW4uLi4iIC8+PG1ldGEgbmFtZT0idHdpdHRlcjp1cmwiIGNvbnRlbnQ9Imh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZXMvUG9ibGFkb19jb3N0ZXJvX2RlbF9jb2xsX2RlX0NhbGFfTW9yZWxsLzEwNjk5IiAvPjxtZXRhIG5hbWU9InR3aXR0ZXI6aW1hZ2UiIGNvbnRlbnQ9Imh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZG9jdW1lbnRzL0ltYXRnZXMvMTA2OTdpbWcxMy5qcGciIC8+ZAIQD2QWAgIBDxYCHwEFSDxzY3JpcHQgdHlwZT0idGV4dC9qYXZhc2NyaXB0IiBzcmM9Ii9qYXZhc2NyaXB0L29sNS4yLjAvb2wuanMiPjwvc2NyaXB0PmQCAw8WAh4Gb25sb2FkBQxsb2FkKCcnLCcyJykWAgIBDxYCHgZhY3Rpb24FMS9lcy9Qb2JsYWRvX2Nvc3Rlcm9fZGVsX2NvbGxfZGVfQ2FsYV9Nb3JlbGwvMTA2OTkWAgIBD2QWBgIBD2QWDGYPDxYEHghDc3NDbGFzc2UeBF8hU0ICAmQWGgIBD2QWBAIBDxYCHwEF3AU8ZGl2IGNsYXNzPSJESVZkYWx0MWEgdmlzaWJsZSIgaWQ9IkRJVmRhbHREZXN0SWQwIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vRG9jdW1lbnRzL0ltYXRnZXMvY2FjNzYzNDAtZWI1Yi00ZGQwLWIzZjYtMGRhNTAxNjNlZjgzLmpwZyk7Ij4mbmJzcDs8L2Rpdj48ZGl2IGNsYXNzPSJESVZkYWx0MWEiIGlkPSJESVZkYWx0RGVzdElkMSIgc3R5bGU9ImJhY2tncm91bmQtaW1hZ2U6IHVybChodHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL0RvY3VtZW50cy9JbWF0Z2VzLzgyYmZlZDEzLWI5YzEtNDI3NC04YThiLTZmMjE0MWRiZDM3ZC5qcGcpOyI+Jm5ic3A7PC9kaXY+PGRpdiBjbGFzcz0iRElWZGFsdDFhIiBpZD0iRElWZGFsdERlc3RJZDIiIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cHM6Ly93d3cubWVub3JjYXRhbGF5b3RpY2EuaW5mby9Eb2N1bWVudHMvSW1hdGdlcy9jZmNiZTkxMy02MmQ4LTRjMjctYjcyMS0xYzJkZjA5MmU2MzguanBnKTsiPiZuYnNwOzwvZGl2PjxkaXYgY2xhc3M9IkRJVmRhbHQxYSIgaWQ9IkRJVmRhbHREZXN0SWQzIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vRG9jdW1lbnRzL0ltYXRnZXMvZmMzYTFmN2MtZWU5Yy00ZTRjLWExZDYtZDBiZDVjYjNkZmY4LmpwZyk7Ij4mbmJzcDs8L2Rpdj5kAgMPDxYCHgdWaXNpYmxlaGRkAgMPD2QWAh4Hb25jbGljawUNdmVyQ2VyY2FQdWIoKWQCBQ8PZBYGHgdvbmtleXVwBQtjZXJjYVB1YigyKR4Kb25rZXlwcmVzcwUkaWYgKGV2ZW50LmtleUNvZGU9PTEzKSByZXR1cm4gZmFsc2U7HgxhdXRvY29tcGxldGUFA29mZmQCBw8PFgIfAQUDQ2FzFgIfBwUPdmVyTWVudUlkaW9tYSgpZAIJDw8WAh4LTmF2aWdhdGVVcmwFJC9Db250aW5ndXQuYXNweD9JRElPTUE9MSZJZFB1Yj0xMDY5OWRkAgsPDxYCHwsFJC9Db250aW5ndXQuYXNweD9JRElPTUE9MiZJZFB1Yj0xMDY5OWRkAg0PDxYCHwsFJC9Db250aW5ndXQuYXNweD9JRElPTUE9MyZJZFB1Yj0xMDY5OWRkAhEPZBYCAgEPDxYCHwEFH0VuY3VlbnRyYSB0b2RvcyBsb3MgeWFjaW1pZW50b3NkZAITDw9kFgIeBXN0eWxlBS5iYWNrZ3JvdW5kLWltYWdlOnVybCgvaW1hcy9nZW5lcmFsL2xvZ28yLnBuZyk7ZAIVDw9kFgIfDAUxYmFja2dyb3VuZC1pbWFnZTp1cmwoL2ltYXMvZ2VuZXJhbC9sb2dvQmlvMi5wbmcpO2QCFw8PZBYCHwwFNGJhY2tncm91bmQtaW1hZ2U6dXJsKC9pbWFzL2dlbmVyYWwvbG9nb1VuZXNjb0UucG5nKTtkAhkPD2QWAh8MBS5iYWNrZ3JvdW5kLWltYWdlOnVybCgvaW1hcy9nZW5lcmFsL2xvZ281LnBuZyk7ZAIbDxYCHwEFjCg8ZGl2IGlkPSJEYWx0MjAxOSIgY2xhc3M9Im1lbnUiPjxkaXYgaWQ9IkRhbHQyMDE5MjU1OCIgY2xhc3M9Im9wY2lvTWVudSI+PGEgaHJlZj0iIyoiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+TWVub3JjYSBUYWxhecOzdGljYTwvYT48ZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTQ0MzgiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvUHVibGljYWNpb25zL2xsaXN0YXQuYXNweD90aXBvPU4xNiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5MYSBwcmVoaXN0b3JpYSBkZSBsYSBpc2xhPC9hPjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTQ0NDMiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQ0NDIiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+VGlwb3MgZGUgZXN0cnVjdHVyYXM8L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIyNTYxIiBjbGFzcz0ic3ViTWVudSI+PGEgaHJlZj0iIyoiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+QXNwZWN0b3MgY2xhdmU8L2E+PGRpdj48ZGl2PjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMTM0NyIgdGFyZ2V0PSJfc2VsZiI+RWwgUGF0cmltb25pbyBtdW5kaWFsPC9hPjwvZGl2PjxkaXY+PGEgaHJlZj0iL0NvbnRpbmd1dC5hc3B4P0lkUHViPTExMzEwIiB0YXJnZXQ9Il9zZWxmIj5FbCB2YWxvciB1bml2ZXJzYWwgZXhjZXBjaW9uYWw8L2E+PC9kaXY+PGRpdj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTEzMTEiIHRhcmdldD0iX3NlbGYiPkNyaXRlcmlvcyBkZSBpbnNjcmlwY2nDs248L2E+PC9kaXY+PGRpdj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTI5MjIiIHRhcmdldD0iX3NlbGYiPkRvY3VtZW50YWNpw7NuIDwvYT48L2Rpdj48ZGl2PjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMTMxMiIgdGFyZ2V0PSJfc2VsZiI+TG9zIGNvbXBvbmVudGVzIGRlbCBiaWVuPC9hPjwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5MTQxMzAiIGNsYXNzPSJvcGNpb01lbnUiPjxhIGhyZWY9IiMqIiB0YXJnZXQ9Il9zZWxmIiBvbmNsaWNrPSJtZW51KHRoaXMucGFyZW50Tm9kZSkiPkFnZW5jaWEgTWVub3JjYSBUYWxhecOzdGljYTwvYT48ZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTQxNTQiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQxNTMiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+wr9RdcOpIGVzIGxhIEFnZW5jaWE/PC9hPjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTQxNTkiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQxNTgiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+wr9RdcOpIGhhY2UgbGEgQWdlbmNpYT88L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIxNDE2NCIgY2xhc3M9InN1Yk1lbnUiPjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xNDE2MyIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5Eb2N1bWVudG9zPC9hPjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTQxNjkiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQxNjgiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+QWN0YXMgZGUgcmV1bmlvbmVzPC9hPjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTQxNzYiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvc29saWNpdHVkcy9mb3Jtc29sLmFzcHg/dGlwbz1TVUciIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+U3VnZXJlbmNpYXMgeSBwcm9wdWVzdGFzPC9hPjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTM0MzgiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTM0NjEiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+U2VsZWNjacOzbiBkZSBwZXJzb25hbDwvYT48L2Rpdj48L2Rpdj48L2Rpdj48ZGl2IGlkPSJEYWx0MjAxOTI1NTkiIGNsYXNzPSJvcGNpb01lbnUiPjxhIGhyZWY9Ii9QdWJsaWNhY2lvbnMvdmlzaXRlcy5hc3B4IiB0YXJnZXQ9Il9zZWxmIiBvbmNsaWNrPSJtZW51KHRoaXMucGFyZW50Tm9kZSkiPlZpc2l0YSBsb3MgeWFjaW1pZW50b3M8L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTkyNTYwIiBjbGFzcz0ib3BjaW9NZW51Ij48YSBocmVmPSIjKiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj7DgXJlYSBkZSBpbnZlc3RpZ2FjacOzbjwvYT48ZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMjU2OSIgY2xhc3M9InN1Yk1lbnUiPjxhIGhyZWY9Ii9QdWJsaWNhY2lvbnMvbGxpc3RhdC5hc3B4P3RpcG89TjA2IiB0YXJnZXQ9Il9zZWxmIiBvbmNsaWNrPSJtZW51KHRoaXMucGFyZW50Tm9kZSkiPlByb3llY3RvcyBhcnF1ZW9sw7NnaWNvczwvYT48L2Rpdj48ZGl2IGlkPSJEYWx0MjAxOVN1YjI1NzAiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIjKiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5SZWN1cnNvcyBjaWVudMOtZmljb3M8L2E+PGRpdj48ZGl2PjxhIGhyZWY9Ii9QdWJsaWNhY2lvbnMvbGxpc3RhdC5hc3B4P3RpcG89TjA3IiB0YXJnZXQ9Il9zZWxmIj5CaWJsaW9ncmFmw61hPC9hPjwvZGl2PjxkaXY+PGEgaHJlZj0iL0NvbnRpbmd1dC5hc3B4P0lkUHViPTEwNTgzIiB0YXJnZXQ9Il9zZWxmIj5NdXNlb3MgeSBhcmNoaXZvczwvYT48L2Rpdj48ZGl2PjxhIGhyZWY9Ii9QdWJsaWNhY2lvbnMvbGxpc3RhdC5hc3B4P3RpcG89TjE0IiB0YXJnZXQ9Il9zZWxmIj5JbmZvcm1lczwvYT48L2Rpdj48L2Rpdj48L2Rpdj48L2Rpdj48L2Rpdj48ZGl2IGlkPSJEYWx0MjAxOTE0MTc0IiBjbGFzcz0ib3BjaW9NZW51Ij48YSBocmVmPSIjKiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5BY3R1YWxpZGFkPC9hPjxkaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIyNTYyIiBjbGFzcz0ic3ViTWVudSI+PGEgaHJlZj0iL1B1YmxpY2FjaW9ucy9sbGlzdGF0LmFzcHg/dGlwbz1OMDIiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+Tm90aWNpYXM8L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIyNTYzIiBjbGFzcz0ic3ViTWVudSI+PGEgaHJlZj0iL2FnZW5kYS9hZ2VuZGEuYXNweCIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5BZ2VuZGE8L2E+PC9kaXY+PC9kaXY+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTkyNTY0IiBjbGFzcz0ib3BjaW9NZW51Ij48YSBocmVmPSIjKiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5EaXZ1bGdhY2nDs248L2E+PGRpdj48ZGl2IGlkPSJEYWx0MjAxOVN1YjI1ODEiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvUHVibGljYWNpb25zL2xsaXN0YXQuYXNweD90aXBvPU4xMiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5JbmljaWF0aXZhczwvYT48L2Rpdj48ZGl2IGlkPSJEYWx0MjAxOVN1YjI1ODIiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvUHVibGljYWNpb25zL2xsaXN0YXQuYXNweD90aXBvPU4xMyIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5Eb2N1bWVudGFsIE1lbm9yY2EgVGFsYXnDs3RpY2E8L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIyNTg0IiBjbGFzcz0ic3ViTWVudSI+PGEgaHJlZj0iIyoiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+UHVibGljYWNpb25lczwvYT48ZGl2PjxkaXY+PGEgaHJlZj0iL1B1YmxpY2FjaW9ucy9sbGlzdGF0LmFzcHg/dGlwbz1OMTUiIHRhcmdldD0iX3NlbGYiPkNvbGVjY2nDs24gU2l0am90PC9hPjwvZGl2PjxkaXY+PGEgaHJlZj0iL1B1YmxpY2FjaW9ucy9sbGlzdGF0LmFzcHg/dGlwbz1OMTgiIHRhcmdldD0iX3NlbGYiPkN1ZW50b3MgaW5mYW50aWxlczwvYT48L2Rpdj48ZGl2PjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xNDE0OCIgdGFyZ2V0PSJfc2VsZiI+UHVudG9zIGRlIHZlbnRhPC9hPjwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5MTIwODQiIGNsYXNzPSJvcGNpb01lbnUiPjxhIGhyZWY9IiMqIiB0YXJnZXQ9Il9zZWxmIiBvbmNsaWNrPSJtZW51KHRoaXMucGFyZW50Tm9kZSkiPlByZW5zYTwvYT48ZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTIwODUiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTIwNzUiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+RG9zc2llciBkZSBwcmVuc2E8L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIxMjA4NiIgY2xhc3M9InN1Yk1lbnUiPjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMjA4MCIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5NYW51YWwgY29ycG9yYXRpdm88L2E+PC9kaXY+PGRpdiBpZD0iRGFsdDIwMTlTdWIxMjA4NyIgY2xhc3M9InN1Yk1lbnUiPjxhIGhyZWY9Ii9JbWdHYWxlcmlhL0dhbGVyaWEuYXNweD9JZEdhbGVyaWE9MTEiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9Im1lbnUodGhpcy5wYXJlbnROb2RlKSI+R2FsZXLDrWEgZGUgaW3DoWdlbmVzPC9hPjwvZGl2PjxkaXYgaWQ9IkRhbHQyMDE5U3ViMTMwMTAiIGNsYXNzPSJzdWJNZW51Ij48YSBocmVmPSIvUHVibGljYWNpb25zL2xsaXN0YXQuYXNweD90aXBvPU4xOSIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0ibWVudSh0aGlzLnBhcmVudE5vZGUpIj5BcnTDrWN1bG9zPC9hPjwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PmQCAg8PFgIfAQUfRW5jdWVudHJhIHRvZG9zIGxvcyB5YWNpbWllbnRvc2RkAgQPDxYCHwsFJC9Db250aW5ndXQuYXNweD9JRElPTUE9MSZJZFB1Yj0xMDY5OWRkAgYPDxYCHwsFJC9Db250aW5ndXQuYXNweD9JRElPTUE9MiZJZFB1Yj0xMDY5OWRkAggPDxYCHwsFJC9Db250aW5ndXQuYXNweD9JRElPTUE9MyZJZFB1Yj0xMDY5OWRkAgoPDxYCHwEFATRkZAIDD2QWDgIHDxYCHwEF1Dk8ZGl2IGNsYXNzPSJoaWRlIj4NCjxkaXYgY2xhc3M9IlBMQV9NT04iPg0KPGRpdiBjbGFzcz0iUExBX01PTm1pbmlhIj4NCjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMDY5OSIgdGFyZ2V0PSJfc2VsZiI+PGltZyAgc3JjPSJodHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL0RvY3VtZW50cy9JbWF0Z2VzLzEwNjk3aW1nMTMuanBnIiBhbHQ9IiIgIC8+PC9hPg0KPC9kaXY+DQo8ZGl2IGNsYXNzPSJQTEFfTU9OdGl0b2wiPjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMDY5OSIgdGFyZ2V0PSJfc2VsZiI+UG9ibGFkbyBjb3N0ZXJvIGRlbCBjb2xsIGRlIENhbGEgTW9yZWxsPC9hPjwvZGl2Pg0KPGRpdiBjbGFzcz0iUExBX01PTnJlc3VtIj5FbiBDYWxhIE1vcmVsbCwgdXJiYW5pemFjaSZvYWN1dGU7biBkZSBsYSBjb3N0YSBub3J0ZSBkZSBDaXV0YWRlbGxhLCBzZSBlbXBsYXphIHVubyBkZSBsb3MgeWFjaW1pZW50b3MgYXJxdWVvbCZvYWN1dGU7Z2ljb3MgbSZhYWN1dGU7cyBlc3BlY3RhY3VsYXJlcyBkZSBsYSBpc2xhLiBMbyBjb25mb3JtYW4gdW5hIGdyYW4gbmVjciZvYWN1dGU7cG9saXMsIGRlIGRpZWNpc2lldGUgY3VldmFzIGFydGlmaWNpYWxlcywgbGEgbWF5b3ImaWFjdXRlO2EgZGUgJmVhY3V0ZTtwb2NhIHRhbGF5Jm9hY3V0ZTt0aWNhLCB5IHVuIHBvYmxhZG8gY29zdGVybyBmb3JtYWRvIHBvciAxMyBjYXNhcywgdW5hcyBkZSBwbGFudGEgYWJzaWRhbCB5IG90cmFzIGN1YWRyYW5ndWxhcmVzLCB5IHF1ZSBmdWUgaGFiaXRhZG8gZHVyYW50ZSBsYSBlZGFkIGRlbCBicm9uY2UgKDEuNjAwLTEuMjAwIGFDKS48YnIgLz4KTG8gcXVlIHNvcnByZW5kZSBlcyBsYSB0JmVhY3V0ZTtjbmljYSBjb25zdHJ1Y3RpdmEsIHF1ZSBubyBlcyBjaWNsJm9hY3V0ZTtwZWEgY29tbyBjb3JyZXNwb25kZXImaWFjdXRlO2EgYSBsYXMgbmF2ZXRhcyBkZSBoYWJpdGFjaSZvYWN1dGU7biBwcm9waWFzIGRlIGxhICZlYWN1dGU7cG9jYSwgc2lubyBxdWUgZXMgYSBiYXNlIGRlIHBlcXVlJm50aWxkZTthcyBwaWVkcmFzLjxiciAvPgpEZXNkZSAyMDExIGVzIGVzdHVkaWFkbyBwb3IgZWwgZXF1aXBvIGRlIGFycXVlJm9hY3V0ZTtsb2dvcyBkZSBQcm95ZWN0byBhcnF1ZW9sJm9hY3V0ZTtnaWNvIEVudHJlIElzbGFzLCBxdWUgcGFydGVuIGRlIGxhIGhpcCZvYWN1dGU7dGVzaXMgZGUgcXVlIHNlIHRyYXRhciZpYWN1dGU7YSBkZSB1bm8gZGUgbG9zICZ1YWN1dGU7bHRpbW9zIHBvYmxhZG9zIG5hdmlmb3JtZXMgZW4gc2VyIGNvbnN0cnVpZG9zLiBTZWcmdWFjdXRlO24gY3JlZW4sIGVsICZ1YWN1dGU7bHRpbW8gZ3J1cG8gcXVlIHZpdmkmb2FjdXRlOyBhbGwmaWFjdXRlOyBzZSBoYWJyJmlhY3V0ZTthIHZpc3RvIGFycmluY29uYWRvIHBvciBsYSBwcmVzaSZvYWN1dGU7biBkZSB1biBudWV2byB0aXBvIGRlIHNvY2llZGFkIHF1ZSBzZSBjb25jZW50cmFiYSBlbiBwb2JsYWRvcyBtJmFhY3V0ZTtzIGdyYW5kZXMgeSBjb21lbnphYmEgYSBjb25zdHJ1aXIgdGFsYXlvdHMuPC9kaXY+DQo8L2Rpdj4NCjwvZGl2Pg0KPCEtLSBGSVRJVFVMQVIgLS0+DQo8ZGl2IGNsYXNzPSJQTEFfbnRpbGxhIj4NCjxkaXYgY2xhc3M9IlBMQV90aXRvbCI+PGgxPlBvYmxhZG8gY29zdGVybyBkZWwgY29sbCBkZSBDYWxhIE1vcmVsbDwvaDE+PC9kaXY+DQo8ZGl2IGNsYXNzPSJQTEFfdGV4dGUiPjxwPg0KRW4gQ2FsYSBNb3JlbGwsIHVyYmFuaXphY2kmb2FjdXRlO24gZGUgbGEgY29zdGEgbm9ydGUgZGUgQ2l1dGFkZWxsYSwgc2UgZW1wbGF6YSB1bm8gZGUgbG9zIHlhY2ltaWVudG9zIGFycXVlb2wmb2FjdXRlO2dpY29zIG0mYWFjdXRlO3MgZXNwZWN0YWN1bGFyZXMgZGUgbGEgaXNsYS4gTG8gY29uZm9ybWFuIHVuYSBncmFuIG5lY3Imb2FjdXRlO3BvbGlzLCBkZSBkaWVjaXNpZXRlIGN1ZXZhcyBhcnRpZmljaWFsZXMsIGxhIG1heW9yJmlhY3V0ZTthIGRlICZlYWN1dGU7cG9jYSB0YWxheSZvYWN1dGU7dGljYSwgeSB1biBwb2JsYWRvIGNvc3Rlcm8gZm9ybWFkbyBwb3IgMTMgY2FzYXMsIHVuYXMgZGUgcGxhbnRhIGFic2lkYWwgeSBvdHJhcyBjdWFkcmFuZ3VsYXJlcywgeSBxdWUgZnVlIGhhYml0YWRvIGR1cmFudGUgbGEgZWRhZCBkZWwgYnJvbmNlICgxLjYwMC0xLjIwMCBhQykuPGJyIC8+CkxvIHF1ZSBzb3JwcmVuZGUgZXMgbGEgdCZlYWN1dGU7Y25pY2EgY29uc3RydWN0aXZhLCBxdWUgbm8gZXMgY2ljbCZvYWN1dGU7cGVhIGNvbW8gY29ycmVzcG9uZGVyJmlhY3V0ZTthIGEgbGFzIG5hdmV0YXMgZGUgaGFiaXRhY2kmb2FjdXRlO24gcHJvcGlhcyBkZSBsYSAmZWFjdXRlO3BvY2EsIHNpbm8gcXVlIGVzIGEgYmFzZSBkZSBwZXF1ZSZudGlsZGU7YXMgcGllZHJhcy48YnIgLz4KRGVzZGUgMjAxMSBlcyBlc3R1ZGlhZG8gcG9yIGVsIGVxdWlwbyBkZSBhcnF1ZSZvYWN1dGU7bG9nb3MgZGUgUHJveWVjdG8gYXJxdWVvbCZvYWN1dGU7Z2ljbyBFbnRyZSBJc2xhcywgcXVlIHBhcnRlbiBkZSBsYSBoaXAmb2FjdXRlO3Rlc2lzIGRlIHF1ZSBzZSB0cmF0YXImaWFjdXRlO2EgZGUgdW5vIGRlIGxvcyAmdWFjdXRlO2x0aW1vcyBwb2JsYWRvcyBuYXZpZm9ybWVzIGVuIHNlciBjb25zdHJ1aWRvcy4gU2VnJnVhY3V0ZTtuIGNyZWVuLCBlbCAmdWFjdXRlO2x0aW1vIGdydXBvIHF1ZSB2aXZpJm9hY3V0ZTsgYWxsJmlhY3V0ZTsgc2UgaGFiciZpYWN1dGU7YSB2aXN0byBhcnJpbmNvbmFkbyBwb3IgbGEgcHJlc2kmb2FjdXRlO24gZGUgdW4gbnVldm8gdGlwbyBkZSBzb2NpZWRhZCBxdWUgc2UgY29uY2VudHJhYmEgZW4gcG9ibGFkb3MgbSZhYWN1dGU7cyBncmFuZGVzIHkgY29tZW56YWJhIGEgY29uc3RydWlyIHRhbGF5b3RzLjxiciAvPg0KPGJyIC8+PGRpdiBpZD0iUExBX2NhamFJbWFzIj48YSBpZD0iUExBX2NhamFJbWFzQXZhbiIgaHJlZj0iIyoiIHRhcmdldD0iX3NlbGYiIG9uY2xpY2s9ImNhamFJbWFzQXZhbig0KSI+Jm5ic3A7PC9hPjxhIGlkPSJQTEFfY2FqYUltYXNBdHJhIiBocmVmPSIjKiIgdGFyZ2V0PSJfc2VsZiIgb25jbGljaz0iY2FqYUltYXNBdHJhKDQpIj4mbmJzcDs8L2E+PGRpdiBpZD0iUExBX2NhamFJbWEwIiBjbGFzcz0iUExBX2NhamFJbWEiIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOnVybChodHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL0RvY3VtZW50cy9JbWF0Z2VzL2NhYzc2MzQwLWViNWItNGRkMC1iM2Y2LTBkYTUwMTYzZWY4My5qcGcpOyI+Jm5ic3A7PC9kaXY+PGRpdiBpZD0iUExBX2NhamFJbWExIiBjbGFzcz0iUExBX2NhamFJbWEiIHN0eWxlPSJkaXNwbGF5Om5vbmU7YmFja2dyb3VuZC1pbWFnZTp1cmwoaHR0cHM6Ly93d3cubWVub3JjYXRhbGF5b3RpY2EuaW5mby9Eb2N1bWVudHMvSW1hdGdlcy84MmJmZWQxMy1iOWMxLTQyNzQtOGE4Yi02ZjIxNDFkYmQzN2QuanBnKTsiPiZuYnNwOzwvZGl2PjxkaXYgaWQ9IlBMQV9jYWphSW1hMiIgY2xhc3M9IlBMQV9jYWphSW1hIiBzdHlsZT0iZGlzcGxheTpub25lO2JhY2tncm91bmQtaW1hZ2U6dXJsKGh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vRG9jdW1lbnRzL0ltYXRnZXMvY2ZjYmU5MTMtNjJkOC00YzI3LWI3MjEtMWMyZGYwOTJlNjM4LmpwZyk7Ij4mbmJzcDs8L2Rpdj48ZGl2IGlkPSJQTEFfY2FqYUltYTMiIGNsYXNzPSJQTEFfY2FqYUltYSIgc3R5bGU9ImRpc3BsYXk6bm9uZTtiYWNrZ3JvdW5kLWltYWdlOnVybChodHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL0RvY3VtZW50cy9JbWF0Z2VzL2ZjM2ExZjdjLWVlOWMtNGU0Yy1hMWQ2LWQwYmQ1Y2IzZGZmOC5qcGcpOyI+Jm5ic3A7PC9kaXY+PC9kaXY+DQo8c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIGhvcmFyaSI+SG9yYXJpbzo8L3N0cm9uZz4gQWNjZXNvIGxpYnJlPGJyIC8+PGJyIC8+DQo8c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIHByZXUiPlByZWNpbzo8L3N0cm9uZz4gR3JhdHVpdG88YnIgLz48YnIgLz4NCjxzdHJvbmcgY2xhc3M9IlBMQV9NT05pY28gdmlzaXRhYmxlIj5WaXNpdGFibGU6PC9zdHJvbmc+IFNpPGJyIC8+PGJyIC8+DQo8c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIGFjY2VzIj5BY2Nlc286PC9zdHJvbmc+IFNlIGFjY2VkZSBwb3IgbGEgY2FycmV0ZXJhIGRlIENpdXRhZGVsbGEgYSBDYWxhIE1vcmVsbC4gVW5hIHZleiBlbiBsYSByb3RvbmRhIGRlIGxhcyB0YXVsYXMgZGUgQ2FsYSBNb3JlbGwsIGhheSBxdWUgZGlyaWdpcnNlIGFsIG5vcnRlIHksIHNpZ3VpZW5kbyBlbCB2aWFsLCBnaXJhciBhIGxhIGl6cXVpZXJkYSBlbiBlbCAmdWFjdXRlO2x0aW1vIHJhbWFsLCBwYXJhIHNlZ3VpciBwYXJhbGVsbyBhIGxhIGNvc3RhIGhhc3RhIGxsZWdhciBhIHVuYSB2JmlhY3V0ZTthIHNpbiBzYWxpZGEgLiBEZXNkZSBhbGwmaWFjdXRlOyBzZSBwdWVkZSBhY2NlZGVyIGNhbWluYW5kbyBoYXN0YSBlbCB5YWNpbWllbnRvIGFycXVlb2wmb2FjdXRlO2dpY28uPGJyIC8+ClRhbWJpJmVhY3V0ZTtuIGFjY2VzaWJsZSBkZXNkZSBsb3MgaXRpbmVyYXJpb3MgOCB5IDkgZGVsIENhbSZpYWN1dGU7IGRlIENhdmFsbHMsIGVsIHRyYW1vIEFsZ2FpcmVucy1DYWxhIE1vcmVsbCB5IENhbGEgTW9yZWxsLVB1bnRhIE5hdGkuPGJyIC8+CkhheSBpbmRpY2Fkb3JlcyBkZSBjYXJyZXRlcmEuPGJyIC8+PGJyIC8+DQo8c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIGFwYXJjYW1lbnQiPkFwYXJjYW1pZW50bzo8L3N0cm9uZz4gTm8gaGFiaWxpdGFkby4gU2UgcHVlZGUgZXN0YWNpb25hciBlbiBsYSB1cmJhbml6YWNpJm9hY3V0ZTtuPGJyIC8+PGJyIC8+DQo8c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIHZpc2l0ZXMiPlZpc2l0YXMgZ3VpYWRhczo8L3N0cm9uZz4gSGF5IGNhcnRlbGVzIGluZm9ybWF0aXZvczxiciAvPjxiciAvPg0KPHN0cm9uZyBjbGFzcz0iUExBX01PTmljbyBjb250YWN0ZSI+Q29udGFjdG86PC9zdHJvbmc+IDxiciAvPjxiciAvPg0KPHN0cm9uZyBjbGFzcz0iUExBX01PTmljbyBzZXJ2ZWlzIj5TZXJ2aWNpb3M6PC9zdHJvbmc+IE5vPGJyIC8+PGJyIC8+DQo8c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIG1vYmlsaXRhdCI+QWNjZXNvIGEgcGVyc29uYXMgY29uIG1vdmlsaWRhZCByZWR1Y2lkYTo8L3N0cm9uZz4gTm88YnIgLz48YnIgc3R5bGU9ImNsZWFyOmJvdGg7IiAvPg0KPGEgaHJlZj0iIyoiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJib3RvbiIgb25jbGljaz0iJCgnI2Rpdk1lc0luZm8nKS5jc3MoJ2Rpc3BsYXknLCAnYmxvY2snKTskKHRoaXMpLmNzcygnZGlzcGxheScsICdub25lJyk7Ij5Nw6FzIGluZm9ybWFjacOzbjwvYT4gPGEgaHJlZj0iIyoiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJib3RvbiIgb25jbGljaz0iJCgnLmRpdk1hcGEnKS50b2dnbGVDbGFzcygnb2N1bHRvJyk7Ij5WZXIgbWFwYTwvYT4NCjxkaXYgaWQ9ImRpdk1lc0luZm8iIHN0eWxlPSJkaXNwbGF5Om5vbmU7Ij48c3Ryb25nIGNsYXNzPSJQTEFfTU9OaWNvIG1lc2luZm8iPk3DoXMgaW5mb3JtYWNpw7NuOjwvc3Ryb25nPiA8YnIgLz4KPGJyIC8+CjxhIGNsYXNzPSJib3RvbiIgaHJlZj0iL1B1YmxpY2FjaW9ucy9sbGlzdGF0LmFzcHg/dGlwbz1OMTYjZWl4UHViMSIgdGFyZ2V0PSJfc2VsZiI+UGVyaW9kbyBkZSBsYXMgbmF2ZXRhczwvYT48YnIgLz4KPGJyIC8+CkVsIHBvYmxhZG8gc2UgZW5jdWVudHJhIGRlbGltaXRhZG8geSBjZXJyYWRvIHBvciB1bmEgbXVyYWxsYSBzaXR1YWRhIGFsIHN1ci4gRW4gZWwgY2VudHJvIGRlbCBwb2JsYWRvLCBlbiBsYSBwZW5kaWVudGUgZGUgYmFqYWRhIGhhY2lhIGVsIG5vcnRlIGhheSBkb3MgcGVxdWUmbnRpbGRlO2FzIGRlcHJlc2lvbmVzIGV4Y2F2YWRhcyBlbiBsYSByb2NhLCBkb3MgYmFsc2FzLCBxdWUgZnVlcm9uIHV0aWxpemFkYXMgcGFyYSBsYSByZWNvZ2lkYSB5IGRlY2FudGFjaSZvYWN1dGU7biBkZSBhZ3VhLiBEZSBoZWNobywgZHVyYW50ZSB0b2RvIGVsIGEmbnRpbGRlO28gcHJlc2VudGFuIHZlZ2V0YWNpJm9hY3V0ZTtuIGhlcmImYWFjdXRlO2NlYSB2ZXJkZS48YnIgLz4KRWwgcHJveWVjdG8gZGUgaW52ZXN0aWdhY2kmb2FjdXRlO24gRW50cmVJbGxlcyBwdXNvIGFsIGRlc2N1YmllcnRvIGRvcyBuYXZpZm9ybWVzIGRlIHBsYW50YSBhYnNpZGFsIGFsYXJnYWRhIGNvbiBsYSBlbnRyYWRhIG9yaWVudGFkYSBoYWNpYSBlbCBzdXIuIFVubyB0aWVuZSB1bmEgaG9ndWVyYSBkZSBwbGF0YWZvcm1hIHJlY3Rhbmd1bGFyIGVuIGVsIGNlbnRybyBkZWwgZWRpZmljaW8geSB1bmEgc2VyaWUgZGUgYmFuY2FkYXMuIEVuIGxhIHpvbmEgZGUgYWNjZXNvIGFsIGVkaWZpY2lvLCBlbiB1biBwZXF1ZSZudGlsZGU7byBlc3BhY2lvIGluc2VydGFkbyBlbiBsYSBtdXJhbGxhIGVzdGUsIHNlIGhhbiBkb2N1bWVudGFkbyBlbGVtZW50b3MgZG9tJmVhY3V0ZTtzdGljb3M6IHVuIHNvcG9ydGUgZGUgZm9ybWEgY2lyY3VsYXIgeSBkZSB1bm9zIDMwIGNtIGRlIGFsdHVyYSBmYWJyaWNhZG8gZW4gYXJjaWxsYSB5IHVuYSBiYXNlIGRlIG1vbGlubyBsaWdlcmFtZW50ZSBjJm9hY3V0ZTtuY2F2YSByZWFsaXphZGEgY29uIGdyZXMgZGVsIHRlcmNpYXJpby4gRHVyYW50ZSBsYSBleGNhdmFjaSZvYWN1dGU7biBhcGFyZWNpJm9hY3V0ZTsgdW5hIGNvbmNlbnRyYWNpJm9hY3V0ZTtuIGRlIHJlc3RvcyBkZSBodWVzb3MgZGUgY2FicmEsIG92ZWphLCBjZXJkbyB5IHZhY2EuIEN1cmlvc2FtZW50ZSBubyBlbmNvbnRyYXJvbiBuaW5nJnVhY3V0ZTtuIHJlc3RvIGRlIHBlc2NhZG8uPGJyIC8+CkVuIGVsIG90cm8gbmF2aWZvcm1lIHRhbWJpJmVhY3V0ZTtuIHNlIGxlIGhhIGRvY3VtZW50YWRvIHVuYSBjaGltZW5lYSBjZW50cmFsIHkgZGVzdGFjYSBlbCBoYWxsYXpnbyBkZSB1biBzZWd1bmRvIGhvZ2FyIGVuIGVsIGZvbmRvIGRlbCBlZGlmaWNpbywgbXV5IHBvc2libGVtZW50ZSB1dGlsaXphZG8gY29tbyBicmFzZXJvLiBBIGxhIGVudHJhZGEgZGVsIGVkaWZpY2lvIHRhbWJpJmVhY3V0ZTtuIHNlIGRvY3VtZW50Jm9hY3V0ZTsgdW4gZXNwYWNpbyBkZSB0cmFiYWpvLCBjb24gYWxndW5hcyBoZXJyYW1pZW50YXMgbCZpYWN1dGU7dGljYXMuPGJyIC8+CkFjdHVhbG1lbnRlIGVzdGUgeWFjaW1pZW50byBlc3QmYWFjdXRlOyB2aXZvIHkgZW4gY29uc3RhbnRlIGNhbWJpbywgeWEgcXVlIGxvcyByZXN1bHRhZG9zIGRlIGxhcyBleGNhdmFjaW9uZXMgYWJyZW4gbnVldmFzIHYmaWFjdXRlO2FzIGRlIGludmVzdGlnYWNpJm9hY3V0ZTtuIHF1ZSBwZXJtaXRlbiBjb25vY2VyIG1lam9yIGxhIHNvY2llZGFkIG5hdmlmb3JtZSBkZSBNZW5vcmNhIHkgc3VzIHJlbGFjaW9uZXMgY29uIGVsIG1hciB5IGxhIG5hdmVnYWNpJm9hY3V0ZTtuLjwvZGl2Pg0KPC9wPg0KPC9kaXY+DQo8L2Rpdj5kAgkPDxYCHwZnZBYCAgUPDxYCHwEFCFZlciBydXRhFgIfBwUMbG9jYWxpemFyKDApZAILDw8WBh8EBQtQTEFfbnRpbGxhMh8FAgIfBmdkFgICAQ8WAh8BBcsIPGRpdiBjbGFzcz0iUE9SX2RpdjVhRGl2Ij48ZGl2IGNsYXNzPSJQT1JfZGl2NWEiPjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xNDM2NSIgdGFyZ2V0PSJfc2VsZiIgY2xhc3M9IlBPUl9kaXY1YUZvdG8iIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cHM6Ly93d3cubWVub3JjYXRhbGF5b3RpY2EuaW5mby9kb2N1bWVudHMvSW1hdGdlcy8xNDM2NWltZzI2MjAyMzEwMjYxMTIxMzIuanBnKTsiPiZuYnNwOzwvYT48ZGl2IGNsYXNzPSJQT1JfZGl2NWFEYXRhIj48ZGl2IGNsYXNzPSJQT1JfZGl2NWFEaWEiPjI2PC9kaXY+PGRpdiBjbGFzcz0iUE9SX2RpdjVhTWVzIj5PY3Q8L2Rpdj48L2Rpdj48ZGl2IGNsYXNzPSJQT1JfZGl2NWFUIGdyaXMiPjxkaXYgY2xhc3M9IlBPUl9kaXY1YVQyIj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQzNjUiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJQT1JfZGl2NWFUaXQiPkZpbmFsaXphIGVsIHByb3llY3RvIHF1aW5xdWVuYWwgZW4gZWwgcG9ibGFkbyBjb3N0ZXJvIGRlbCBjb2xsIGRlIENhbGEgTW9yZWxsPC9hPjwvZGl2PjxkaXYgY2xhc3M9IlBPUl9kaXY1YVRleCBncmlzIj5BIGxvIGxhcmdvIGRlIGxhcyB0cmVzIHByaW1lcmFzIHNlbWFuYXMgZGUgb2N0dWJyZSBzZSBoYSBsbGV2YWRvIGEgY2FibyB1bmEgbnVldmEgY2FtcGEmbnRpbGRlO2EgYXJxdWVvbCZvYWN1dGU7Z2ljYSBlbiBlbCBwb2JsYWRvIGRlIG5hdmV0YXMgZGUgRXMgQ29sbCBkZSBjYWxhIE1vcmVsbCwgY2VudHJhZGEgZW4gbGEgZXhjYXZhY2kmb2FjdXRlO24gZGUgbGEgZGVub21pbmFkYSBBbGJlcmNhIFN1ci4gRXN0YSBkZXByZXNpJm9hY3V0ZTtuIGFydGlmaWNpYWwgZm9ybWEgcGFydGUgZGUgdW5hIGVzdHJ1Y3R1cmEgaGlkciZhYWN1dGU7dWxpY2EgJnVhY3V0ZTtuaWNhIGVuIGxhIHByZWhpc3RvcmlhIGJhbGVhciwgZm9ybWFkYSBwb3IgdW4gY29uanVudG8gZGUgZG9zIGRlcCZvYWN1dGU7c2l0b3MgcGFyYSBsYSByZWNvZ2lkYSBkZSBhZ3VhIGRlIGxsdXZpYSBzaXR1YWRvcyBlbiBlbCBjZW50cm8gZGVsIHByb21vbnRvcmlvLiZuYnNwOzwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PmQCDQ8PFgYfBAULUExBX250aWxsYTEfBQICHwZnZBYCAgEPFgIfAQXxEjxkaXYgY2xhc3M9IlBPUl9kaXY0YURpdiI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhIj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQzODAiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJQT1JfZGl2NGFGb3RvIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZG9jdW1lbnRzL0ltYXRnZXMvMTQzODBpbWcyNzIwMjMxMTA5MTAxMzI0LmpwZyk7Ij4mbmJzcDs8L2E+PGRpdiBjbGFzcz0iUE9SX2RpdjRhRGF0YSI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhRGlhIj4xNjwvZGl2PjxkaXYgY2xhc3M9IlBPUl9kaXY0YU1lcyI+Tm92PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iUE9SX2RpdjRhVCBncmlzIj48ZGl2IGNsYXNzPSJQT1JfZGl2NGFUMiI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhVGlwIj5Db25mZXJlbmNpYTo8L2Rpdj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQzODAiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJQT1JfZGl2NGFUaXQiPkVsIHBvYmxhZG8gZGUgbmF2ZXRhcyBkZSBFcyBDb2xsIGRlIGNhbGEgTW9yZWxsLiBSZXN1bHRhZG9zIGRlIDEzIGHDsW9zIGRlIGV4Y2F2YWNpb25lcyAoMjAxMS0yMDIzKTwvYT48L2Rpdj48ZGl2IGNsYXNzPSJQT1JfZGl2NGFUZXggZ3JpcyI+Q29uZmVyZW5jaWEgc29icmUgZWwgcHJveWVjdG8gYXJxdWVvbCZvYWN1dGU7Z2ljbyBkZWwgcG9ibGFkbyBkZSBuYXZldGFzIGRlIEVzIENvbGwgZGUgQ2FsYSBNb3JlbGwsIGEgY2FyZ28gZGUgRGFtaSZhZ3JhdmU7IFJhbWlzIChtaWVtYnJvIGRlbCBwcm95ZWN0byBkZSBpbnZlc3RpZ2FjaSZvYWN1dGU7biBFbnRyZSBJbGxlcykuPC9kaXY+PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iUE9SX2RpdjRhIj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTQyOTUiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJQT1JfZGl2NGFGb3RvIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZG9jdW1lbnRzL0ltYXRnZXMvMTQyOTVpbWcyNzIwMjMxMDE2MTIyMDM4LmpwZyk7Ij4mbmJzcDs8L2E+PGRpdiBjbGFzcz0iUE9SX2RpdjRhRGF0YSI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhRGlhIj4yMTwvZGl2PjxkaXYgY2xhc3M9IlBPUl9kaXY0YU1lcyI+T2N0PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iUE9SX2RpdjRhVCBncmlzIj48ZGl2IGNsYXNzPSJQT1JfZGl2NGFUMiI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhVGlwIj5FeGN1cnNpw7NuOjwvZGl2PjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xNDI5NSIgdGFyZ2V0PSJfc2VsZiIgY2xhc3M9IlBPUl9kaXY0YVRpdCI+Sm9ybmFkYSBkZSBwdWVydGFzIGFiaWVydGFzIGVuIGVsIENvbGwgZGUgQ2FsYSBNb3JlbGwgPC9hPjwvZGl2PjxkaXYgY2xhc3M9IlBPUl9kaXY0YVRleCBncmlzIj5FbCBlcXVpcG8gZGUgaW52ZXN0aWdhZG9yZXMgZGVsIFByb3llY3RvIEVudHJlIElsbGVzIG9yZ2FuaXphIHVuYSB2aXNpdGEgZ3VpYWRhIGFsIHBvYmxhZG8gY29zdGVybyBkZWwgQ29sbCBkZSBDYWxhIE1vcmVsbCBlc3RlIHMmYWFjdXRlO2JhZG8sIDIxIGRlIG9jdHVicmUsIGEgbGFzIDExIGguPC9kaXY+PC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iUE9SX2RpdjRhIj48YSBocmVmPSIvQ29udGluZ3V0LmFzcHg/SWRQdWI9MTM3MzgiIHRhcmdldD0iX3NlbGYiIGNsYXNzPSJQT1JfZGl2NGFGb3RvIiBzdHlsZT0iYmFja2dyb3VuZC1pbWFnZTogdXJsKGh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vZG9jdW1lbnRzL0ltYXRnZXMvMTM3MzhpbWcyNzIwMjMwNTE1MDMyMDMyLnBuZyk7Ij4mbmJzcDs8L2E+PGRpdiBjbGFzcz0iUE9SX2RpdjRhRGF0YSI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhRGlhIj4wMzwvZGl2PjxkaXYgY2xhc3M9IlBPUl9kaXY0YU1lcyI+SnVuPC9kaXY+PC9kaXY+PGRpdiBjbGFzcz0iUE9SX2RpdjRhVCBncmlzIj48ZGl2IGNsYXNzPSJQT1JfZGl2NGFUMiI+PGRpdiBjbGFzcz0iUE9SX2RpdjRhVGlwIj5FeGN1cnNpw7NuOjwvZGl2PjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMzczOCIgdGFyZ2V0PSJfc2VsZiIgY2xhc3M9IlBPUl9kaXY0YVRpdCI+IlNvbSBUYWxhacOydGljcz8iIHZpc2l0YSBDYWxhIE1vcmVsbDwvYT48L2Rpdj48ZGl2IGNsYXNzPSJQT1JfZGl2NGFUZXggZ3JpcyI+RXhjdXJzaSZvYWN1dGU7biBkZWwgcHJvZ3JhbWEgJnF1b3Q7JnF1b3Q7U29tIFRhbGFpJm9ncmF2ZTt0aWNzPyZxdW90OyAyMDIzIGEgQ2FsYSBNb3JlbGwsIHVuYSBpbmljaWF0aXZhIGRlbCBDb25zZWxsIEluc3VsYXIgZGUgTWVub3JjYSwgZWwgR09CIHkgQW1pY3MgZGVsIE11c2V1IGRlIE1lbm9yY2EuPC9kaXY+PC9kaXY+PC9kaXY+PC9kaXY+ZAIPDw8WBh8EBQtQTEFfbnRpbGxhMh8FAgIfBmdkFgICAQ8WAh8BBZMGPGRpdiBjbGFzcz0iUE9SX2RpdjVhRGl2Ij48ZGl2IGNsYXNzPSJQT1JfZGl2NWEiPjxhIGhyZWY9Ii9Db250aW5ndXQuYXNweD9JZFB1Yj0xMDgzNyIgdGFyZ2V0PSJfc2VsZiIgY2xhc3M9IlBPUl9kaXY1YUZvdG8iIHN0eWxlPSJiYWNrZ3JvdW5kLWltYWdlOiB1cmwoaHR0cHM6Ly93d3cubWVub3JjYXRhbGF5b3RpY2EuaW5mby9kb2N1bWVudHMvSW1hdGdlcy8xMDgzNWltZzEzLmpwZyk7Ij4mbmJzcDs8L2E+PGRpdiBjbGFzcz0iUE9SX2RpdjVhVCBncmlzIj48ZGl2IGNsYXNzPSJQT1JfZGl2NWFUMiI+PGEgaHJlZj0iL0NvbnRpbmd1dC5hc3B4P0lkUHViPTEwODM3IiB0YXJnZXQ9Il9zZWxmIiBjbGFzcz0iUE9SX2RpdjVhVGl0Ij5FeGNhdmFjacOzbiBhcnF1ZW9sw7NnaWNhIGVuIGVsIGNhYm8gY29zdGVybyBkZWwgQ29sbCBDYWxhIE1vcmVsbDwvYT48L2Rpdj48ZGl2IGNsYXNzPSJQT1JfZGl2NWFUZXggZ3JpcyI+PGEgaHJlZj0iaHR0cHM6Ly9tdXNldWRlbWFuYWNvci5jb20vZXMvaW52ZXN0aWdhY2lvbi9wcm95ZWN0b3MtcXVlLWxsZXZhbW9zLWNhYm8vcHJveWVjdG8tZW50cmUtaWxsZXMiPlBST1lFQ1RPIEVOVFJFIElMTEVTPC9hPjxiciAvPgo8YnIgLz4KJm5ic3A7ICZuYnNwO0luc3VsYXJpZGFkLCBpbnRlcmFjY2kmb2FjdXRlO24gY29uIGVsIGV4dGVyaW9yIHkgY29tcGxlamlkYWQgc29jaWFsOiBsb3MgYXNlbnRhbWllbnRvcyBjb3N0ZXJvcyBkZSBsYSBlZGFkIGRlbCBicm9uY2UgZW4gbGFzIElzbGFzIEJhbGVhcmVzLjwvZGl2PjwvZGl2PjwvZGl2PjwvZGl2PmQCEQ8PFgIfBmhkFgICAQ8PFgIfAQUWSW3DoWdlbmVzIHJlbGFjaW9uYWRhc2RkAhMPDxYGHwQFC1BMQV9udGlsbGExHwUCAh8GZ2QWBAIBDw8WAh8BBRRFbmxhY2VzIHJlbGFjaW9uYWRvc2RkAgMPFgIfAQV0PGEgaHJlZj0iaHR0cHM6Ly9jYS53aWtpcGVkaWEub3JnL3dpa2kvUG9ibGF0X2RlX0NhbGFfTW9yZWxsIiB0YXJnZXQ9Il9zZWxmIiBjbGFzcz0iUExBX2xpbmtXRUIiPldpa2lwZWRpYTwvYT48YnIgLz5kAgUPZBYYAgEPDxYCHwEFM8K/UXVpZXJlIGVzdGFyIGluZm9ybWFkbyBkZSBsYXMgw7psdGltYXMgbm92ZWRhZGVzP2RkAgMPDxYCHwEFF1N1c2Nyw61iZXRlIGFsIGJvbGV0w61uZGQCBQ8PFgIfAQUXQ29tcGFydGUgZXN0ZSBjb250ZW5pZG9kZAIHDw9kFgIfBwUVc2hhcmUoJ2ZhY2Vib29rLmNvbScpZAIJDw9kFgIfBwUUc2hhcmUoJ3R3aXR0ZXIuY29tJylkAgsPD2QWAh8HBRVzaGFyZSgnd2hhdHNhcHAuY29tJylkAg0PZBYCAgEPDxYCHwEFE01FTk9SQ0EgVEFMQVnDk1RJQ0FkZAIPDw8WAh8BBQZJTklDSU9kZAIRDw8WAh8BBQlDT05UQUNUQVJkZAITDw8WAh8BBQtBVklTTyBMRUdBTGRkAhUPDxYCHwsFXmh0dHBzOi8vdmFsaWRhdG9yLnczLm9yZy9udS8/ZG9jPWh0dHBzOi8vd3d3Lm1lbm9yY2F0YWxheW90aWNhLmluZm8vQ29udGluZ3V0LmFzcHg/SWRQdWI9MTA2OTlkZAIXDw8WAh8LBa0BaHR0cHM6Ly9qaWdzYXcudzMub3JnL2Nzcy12YWxpZGF0b3IvdmFsaWRhdG9yP3VyaT1odHRwczovL3d3dy5tZW5vcmNhdGFsYXlvdGljYS5pbmZvL0NvbnRpbmd1dC5hc3B4P0lkUHViPTEwNjk5JnByb2ZpbGU9Y3NzM3N2ZyZ1c2VybWVkaXVtPWFsbCZ3YXJuaW5nPTEmdmV4dHdhcm5pbmc9Jmxhbmc9ZXNkZGQbAKyt2tW2+6LC72zIRR0pDdQ3hrwfKaflAHF0aWlyIg==">
+</div>
+
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="C6021902">
+</div>
+        <div id="oscuro" style="display:none;" onclick=""></div>
+        <div id="banner" style="display:none;" onclick="this.style.display=&#39;none&#39;;this.innerHTML=&#39;&#39;"></div>
+        <div id="Panel1">
+	
+            <div id="DIVfons">
+                <div id="DIVcaja">
+                    <div id="DIVprincipal">
+                        <div id="DIVdalt"><div id="Dalt1_Panel3">
+		
+    <div id="Dalt1_Panel5" class="DIVdalt1">
+			
+        <div class="DIVdalt1a" id="DIVdaltDestId0" style="background-image: url(https://www.menorcatalayotica.info/Documents/Imatges/cac76340-eb5b-4dd0-b3f6-0da50163ef83.jpg);">&nbsp;</div><div class="DIVdalt1a visible" id="DIVdaltDestId1" style="background-image: url(https://www.menorcatalayotica.info/Documents/Imatges/82bfed13-b9c1-4274-8a8b-6f2141dbd37d.jpg);">&nbsp;</div><div class="DIVdalt1a" id="DIVdaltDestId2" style="background-image: url(https://www.menorcatalayotica.info/Documents/Imatges/cfcbe913-62d8-4c27-b721-1c2df092e638.jpg);">&nbsp;</div><div class="DIVdalt1a" id="DIVdaltDestId3" style="background-image: url(https://www.menorcatalayotica.info/Documents/Imatges/fc3a1f7c-ee9c-4e4c-a1d6-d0bd5cb3dff8.jpg);">&nbsp;</div>
+        
+    
+		</div>
+    <div class="DIVdalt2">
+        <div class="DIVdalt2a">
+            <div class="DIVdalt2aLinks div1200">
+                <a id="Dalt1_HyperLink8" class="DIVdalt2aLink cerca" onclick="verCercaPub()">&nbsp;</a><div id="DivDaltBusc" class="DivDaltBusc" style="display:none;">
+                    <input name="ctl00$Dalt1$DivDaltBuscText" type="text" id="Dalt1_DivDaltBuscText" class="DivDaltBuscText" onkeyup="cercaPub(2)" onkeypress="if (event.keyCode==13) return false;" autocomplete="off">
+                    <div id="DivDaltBuscDiv" style="display:none;"></div>
+                </div><a href="https://www.facebook.com/mtalaiotica" target="_blank" class="DIVdalt2aLink face">&nbsp;</a><a href="https://www.instagram.com/menorcatalaiotica/" target="_blank" class="DIVdalt2aLink inst">&nbsp;</a><a href="https://twitter.com/mtalaiotica" target="_blank" class="DIVdalt2aLink twit">&nbsp;</a><a href="https://www.youtube.com/user/mtalayotica" target="_blank" class="DIVdalt2aLink ytub">&nbsp;</a><span id="Dalt1_Label2" class="DIVdaltIdioma" onclick="verMenuIdioma()">Cas</span>
+                <div id="DIVdaltIdiomaDiv">
+                    <a id="Dalt1_HyperLink7" href="https://www.menorcatalayotica.info/Contingut.aspx?IDIOMA=1&amp;IdPub=10699">Català</a>
+                    <a id="Dalt1_HyperLink9" href="https://www.menorcatalayotica.info/Contingut.aspx?IDIOMA=2&amp;IdPub=10699">Castellano</a>
+                    <a id="Dalt1_HyperLink10" href="https://www.menorcatalayotica.info/Contingut.aspx?IDIOMA=3&amp;IdPub=10699">English</a>
+                </div>
+                
+                <div id="Dalt1_Panel1" class="DIVdaltVerMapa">
+			
+                    
+                
+		</div>
+            </div>
+        </div>
+        <div class="DIVdalt2b">
+            <div class="div1200">
+                <div class="DIVdaltMenuMovilBoto" onclick="verMenuMovil()"></div>
+                <a id="Dalt1_HyperLink1" class="DIVdaltLogo" href="https://www.menorcatalayotica.info/portal.aspx" target="_self" style="background-image:url(/imas/general/logo2.png);">&nbsp;</a>
+                
+                <a id="Dalt1_HyperLink15" class="logoUnesco" href="https://www.unesco.org/es" target="_blank" style="background-image:url(/imas/general/logoUnescoE.png);">&nbsp;</a>
+                <a id="Dalt1_HyperLink4" class="logoTalaM" href="https://www.menorcatalayotica.info/portal.aspx" target="_self" style="background-image:url(/imas/general/logo5.png);">&nbsp;</a>
+            </div>
+        </div>
+        <div class="DIVdalt2c"><div id="DIVdaltMenu2">
+            <div class="div1200"><div id="Dalt2019" class="menu"><div id="Dalt20192558" class="opcioMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Menorca Talayótica</a><div><div id="Dalt2019Sub14438" class="subMenu"><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N16" target="_self" onclick="menu(this.parentNode)">La prehistoria de la isla</a></div><div id="Dalt2019Sub14443" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14442" target="_self" onclick="menu(this.parentNode)">Tipos de estructuras</a></div><div id="Dalt2019Sub2561" class="subMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Aspectos clave</a><div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=11347" target="_self">El Patrimonio mundial</a></div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=11310" target="_self">El valor universal excepcional</a></div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=11311" target="_self">Criterios de inscripción</a></div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=12922" target="_self">Documentación </a></div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=11312" target="_self">Los componentes del bien</a></div></div></div></div></div><div id="Dalt201914130" class="opcioMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Agencia Menorca Talayótica</a><div><div id="Dalt2019Sub14154" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14153" target="_self" onclick="menu(this.parentNode)">¿Qué es la Agencia?</a></div><div id="Dalt2019Sub14159" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14158" target="_self" onclick="menu(this.parentNode)">¿Qué hace la Agencia?</a></div><div id="Dalt2019Sub14164" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14163" target="_self" onclick="menu(this.parentNode)">Documentos</a></div><div id="Dalt2019Sub14169" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14168" target="_self" onclick="menu(this.parentNode)">Actas de reuniones</a></div><div id="Dalt2019Sub14176" class="subMenu"><a href="https://www.menorcatalayotica.info/solicituds/formsol.aspx?tipo=SUG" target="_self" onclick="menu(this.parentNode)">Sugerencias y propuestas</a></div><div id="Dalt2019Sub13438" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=13461" target="_self" onclick="menu(this.parentNode)">Selección de personal</a></div></div></div><div id="Dalt20192559" class="opcioMenu"><a href="https://www.menorcatalayotica.info/Publicacions/visites.aspx" target="_self" onclick="menu(this.parentNode)">Visita los yacimientos</a></div><div id="Dalt20192560" class="opcioMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Área de investigación</a><div><div id="Dalt2019Sub2569" class="subMenu"><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N06" target="_self" onclick="menu(this.parentNode)">Proyectos arqueológicos</a></div><div id="Dalt2019Sub2570" class="subMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Recursos científicos</a><div><div><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N07" target="_self">Bibliografía</a></div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10583" target="_self">Museos y archivos</a></div><div><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N14" target="_self">Informes</a></div></div></div></div></div><div id="Dalt201914174" class="opcioMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Actualidad</a><div><div id="Dalt2019Sub2562" class="subMenu"><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N02" target="_self" onclick="menu(this.parentNode)">Noticias</a></div><div id="Dalt2019Sub2563" class="subMenu"><a href="https://www.menorcatalayotica.info/agenda/agenda.aspx" target="_self" onclick="menu(this.parentNode)">Agenda</a></div></div></div><div id="Dalt20192564" class="opcioMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Divulgación</a><div><div id="Dalt2019Sub2581" class="subMenu"><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N12" target="_self" onclick="menu(this.parentNode)">Iniciativas</a></div><div id="Dalt2019Sub2582" class="subMenu"><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N13" target="_self" onclick="menu(this.parentNode)">Documental Menorca Talayótica</a></div><div id="Dalt2019Sub2584" class="subMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Publicaciones</a><div><div><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N15" target="_self">Colección Sitjot</a></div><div><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N18" target="_self">Cuentos infantiles</a></div><div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14148" target="_self">Puntos de venta</a></div></div></div></div></div><div id="Dalt201912084" class="opcioMenu"><a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="menu(this.parentNode)">Prensa</a><div><div id="Dalt2019Sub12085" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=12075" target="_self" onclick="menu(this.parentNode)">Dossier de prensa</a></div><div id="Dalt2019Sub12086" class="subMenu"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=12080" target="_self" onclick="menu(this.parentNode)">Manual corporativo</a></div><div id="Dalt2019Sub12087" class="subMenu"><a href="https://www.menorcatalayotica.info/ImgGaleria/Galeria.aspx?IdGaleria=11" target="_self" onclick="menu(this.parentNode)">Galería de imágenes</a></div><div id="Dalt2019Sub13010" class="subMenu"><a href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N19" target="_self" onclick="menu(this.parentNode)">Artículos</a></div></div></div></div></div>
+        </div></div>
+    </div>
+
+	</div>
+<div id="DIVdaltMenuMovil" style="display:none;">
+    <div id="DIVdaltMenuMovilCerrar" onclick="verMenuMovil()">&nbsp;</div>
+    <div id="DIVdaltMenuMovil1"></div>
+    <a id="Dalt1_HyperLink3" href="https://www.menorcatalayotica.info/Mapa.aspx" target="_blank">Encuentra todos los yacimientos</a>
+    <a id="Dalt1_HyperLink11" href="https://www.menorcatalayotica.info/Contingut.aspx?IDIOMA=1&amp;IdPub=10699">Català</a>
+    <a id="Dalt1_HyperLink12" href="https://www.menorcatalayotica.info/Contingut.aspx?IDIOMA=2&amp;IdPub=10699">Castellano</a>
+    <a id="Dalt1_HyperLink13" href="https://www.menorcatalayotica.info/Contingut.aspx?IDIOMA=3&amp;IdPub=10699">English</a>
+</div>
+
+<div style="display:none;">
+    <span id="Dalt1_DIVdalt3total">4</span>
+    <img src="./cala morell_files/logo.png" alt="LOGO" rel="image_src">
+</div>
+
+</div>
+                        <div id="DIVcontingut"><div id="DIVcontingut2"><div id="DIVcontingut3">
+                            <div id="DIVcentre">
+                                
+    
+    <div class="div1200">
+        <div class="PLA_ntilla">
+            <div class="divCompartir">
+                <a id="Content1_HyperLink6" class="divCompartirAtra" href="javascript:history.back(1)" target="_self">&nbsp;</a>
+                
+            </div>
+            <div class="hide">
+<div class="PLA_MON">
+<div class="PLA_MONminia">
+<a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10699" target="_self"><img src="./cala morell_files/10697img13.jpg" alt=""></a>
+</div>
+<div class="PLA_MONtitol"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10699" target="_self">Poblado costero del coll de Cala Morell</a></div>
+<div class="PLA_MONresum">En Cala Morell, urbanización de la costa norte de Ciutadella, se emplaza uno de los yacimientos arqueológicos más espectaculares de la isla. Lo conforman una gran necrópolis, de diecisiete cuevas artificiales, la mayoría de época talayótica, y un poblado costero formado por 13 casas, unas de planta absidal y otras cuadrangulares, y que fue habitado durante la edad del bronce (1.600-1.200 aC).<br>
+Lo que sorprende es la técnica constructiva, que no es ciclópea como correspondería a las navetas de habitación propias de la época, sino que es a base de pequeñas piedras.<br>
+Desde 2011 es estudiado por el equipo de arqueólogos de Proyecto arqueológico Entre Islas, que parten de la hipótesis de que se trataría de uno de los últimos poblados naviformes en ser construidos. Según creen, el último grupo que vivió allí se habría visto arrinconado por la presión de un nuevo tipo de sociedad que se concentraba en poblados más grandes y comenzaba a construir talayots.</div>
+</div>
+</div>
+<!-- FITITULAR -->
+<div class="PLA_ntilla">
+<div class="PLA_titol"><h1>Poblado costero del coll de Cala Morell</h1></div>
+<div class="PLA_texte"><p>
+En Cala Morell, urbanización de la costa norte de Ciutadella, se emplaza uno de los yacimientos arqueológicos más espectaculares de la isla. Lo conforman una gran necrópolis, de diecisiete cuevas artificiales, la mayoría de época talayótica, y un poblado costero formado por 13 casas, unas de planta absidal y otras cuadrangulares, y que fue habitado durante la edad del bronce (1.600-1.200 aC).<br>
+Lo que sorprende es la técnica constructiva, que no es ciclópea como correspondería a las navetas de habitación propias de la época, sino que es a base de pequeñas piedras.<br>
+Desde 2011 es estudiado por el equipo de arqueólogos de Proyecto arqueológico Entre Islas, que parten de la hipótesis de que se trataría de uno de los últimos poblados naviformes en ser construidos. Según creen, el último grupo que vivió allí se habría visto arrinconado por la presión de un nuevo tipo de sociedad que se concentraba en poblados más grandes y comenzaba a construir talayots.<br>
+<br></p><div id="PLA_cajaImas"><a id="PLA_cajaImasAvan" href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="cajaImasAvan(4)" style="display: block;">&nbsp;</a><a id="PLA_cajaImasAtra" href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" onclick="cajaImasAtra(4)" style="display: block;">&nbsp;</a><div id="PLA_cajaIma0" class="PLA_cajaIma" style="background-image:url(https://www.menorcatalayotica.info/Documents/Imatges/cac76340-eb5b-4dd0-b3f6-0da50163ef83.jpg);">&nbsp;</div><div id="PLA_cajaIma1" class="PLA_cajaIma" style="display:none;background-image:url(https://www.menorcatalayotica.info/Documents/Imatges/82bfed13-b9c1-4274-8a8b-6f2141dbd37d.jpg);">&nbsp;</div><div id="PLA_cajaIma2" class="PLA_cajaIma" style="display:none;background-image:url(https://www.menorcatalayotica.info/Documents/Imatges/cfcbe913-62d8-4c27-b721-1c2df092e638.jpg);">&nbsp;</div><div id="PLA_cajaIma3" class="PLA_cajaIma" style="display:none;background-image:url(https://www.menorcatalayotica.info/Documents/Imatges/fc3a1f7c-ee9c-4e4c-a1d6-d0bd5cb3dff8.jpg);">&nbsp;</div></div>
+<strong class="PLA_MONico horari">Horario:</strong> Acceso libre<br><br>
+<strong class="PLA_MONico preu">Precio:</strong> Gratuito<br><br>
+<strong class="PLA_MONico visitable">Visitable:</strong> Si<br><br>
+<strong class="PLA_MONico acces">Acceso:</strong> Se accede por la carretera de Ciutadella a Cala Morell. Una vez en la rotonda de las taulas de Cala Morell, hay que dirigirse al norte y, siguiendo el vial, girar a la izquierda en el último ramal, para seguir paralelo a la costa hasta llegar a una vía sin salida . Desde allí se puede acceder caminando hasta el yacimiento arqueológico.<br>
+También accesible desde los itinerarios 8 y 9 del Camí de Cavalls, el tramo Algairens-Cala Morell y Cala Morell-Punta Nati.<br>
+Hay indicadores de carretera.<br><br>
+<strong class="PLA_MONico aparcament">Aparcamiento:</strong> No habilitado. Se puede estacionar en la urbanización<br><br>
+<strong class="PLA_MONico visites">Visitas guiadas:</strong> Hay carteles informativos<br><br>
+<strong class="PLA_MONico contacte">Contacto:</strong> <br><br>
+<strong class="PLA_MONico serveis">Servicios:</strong> No<br><br>
+<strong class="PLA_MONico mobilitat">Acceso a personas con movilidad reducida:</strong> No<br><br style="clear:both;">
+<a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" class="boton" onclick="$(&#39;#divMesInfo&#39;).css(&#39;display&#39;, &#39;block&#39;);$(this).css(&#39;display&#39;, &#39;none&#39;);">Más información</a> <a href="https://www.menorcatalayotica.info/es/Poblado_costero_del_coll_de_Cala_Morell/10699#*" target="_self" class="boton" onclick="$(&#39;.divMapa&#39;).toggleClass(&#39;oculto&#39;);">Ver mapa</a>
+<div id="divMesInfo" style="display:none;"><strong class="PLA_MONico mesinfo">Más información:</strong> <br>
+<br>
+<a class="boton" href="https://www.menorcatalayotica.info/Publicacions/llistat.aspx?tipo=N16#eixPub1" target="_self">Periodo de las navetas</a><br>
+<br>
+El poblado se encuentra delimitado y cerrado por una muralla situada al sur. En el centro del poblado, en la pendiente de bajada hacia el norte hay dos pequeñas depresiones excavadas en la roca, dos balsas, que fueron utilizadas para la recogida y decantación de agua. De hecho, durante todo el año presentan vegetación herbácea verde.<br>
+El proyecto de investigación EntreIlles puso al descubierto dos naviformes de planta absidal alargada con la entrada orientada hacia el sur. Uno tiene una hoguera de plataforma rectangular en el centro del edificio y una serie de bancadas. En la zona de acceso al edificio, en un pequeño espacio insertado en la muralla este, se han documentado elementos domésticos: un soporte de forma circular y de unos 30 cm de altura fabricado en arcilla y una base de molino ligeramente cóncava realizada con gres del terciario. Durante la excavación apareció una concentración de restos de huesos de cabra, oveja, cerdo y vaca. Curiosamente no encontraron ningún resto de pescado.<br>
+En el otro naviforme también se le ha documentado una chimenea central y destaca el hallazgo de un segundo hogar en el fondo del edificio, muy posiblemente utilizado como brasero. A la entrada del edificio también se documentó un espacio de trabajo, con algunas herramientas líticas.<br>
+Actualmente este yacimiento está vivo y en constante cambio, ya que los resultados de las excavaciones abren nuevas vías de investigación que permiten conocer mejor la sociedad naviforme de Menorca y sus relaciones con el mar y la navegación.</div>
+<p></p>
+</div>
+</div>
+            <div style="clear:both;font-size:0.01em">&nbsp;</div>
+        </div>
+    </div>
+    <div id="Content1_Panel7" class="divMapa movil">
+		
+        <div class="divMapaMas" onclick="view.animate({duration: 200,zoom: view.getZoom() + 1});">&nbsp;</div>
+        <div class="divMapaMen" onclick="view.animate({duration: 200,zoom: view.getZoom() - 1});">&nbsp;</div>
+        <div class="divMapaCerrar" onclick="$(&#39;.divMapa&#39;).toggleClass(&#39;oculto&#39;);">&nbsp;</div>
+        <div id="Content1_PanelTile" class="divMapaTile">
+
+		</div>
+        <div id="Content1_PanelOrto" class="divMapaOrto">
+
+		</div>
+        
+        <div id="map"><div class="ol-viewport" style="position: relative; overflow: hidden; width: 100%; height: 100%; touch-action: none;" data-view="11"><canvas class="ol-unselectable" style="width: 100%; height: 100%; display: block;" width="3024" height="1200"></canvas><div class="ol-overlaycontainer"></div><div class="ol-overlaycontainer-stopevent"><div class="ol-zoom ol-unselectable ol-control"><button class="ol-zoom-in" type="button" title="Zoom in">+</button><button class="ol-zoom-out" type="button" title="Zoom out">−</button></div><div class="ol-rotate ol-unselectable ol-control ol-hidden"><button class="ol-rotate-reset" type="button" title="Reset rotation"><span class="ol-compass" style="transform: rotate(0rad);">⇧</span></button></div><div class="ol-attribution ol-unselectable ol-control ol-collapsed"><ul><li>© IDE Menorca</li></ul><button type="button" title="Attributions"><span>i</span></button></div></div></div></div>
+    
+	</div>
+    <div id="Content1_Panel3" class="PLA_ntilla2">
+		
+        <div class="div1200">
+            <div class="PLA_ntilla">
+                <div class="PLA_titol2">Noticies relacionades</div>
+                <div class="POR_div5aDiv"><div class="POR_div5a"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14365" target="_self" class="POR_div5aFoto" style="background-image: url(https://www.menorcatalayotica.info/documents/Imatges/14365img2620231026112132.jpg);">&nbsp;</a><div class="POR_div5aData"><div class="POR_div5aDia">26</div><div class="POR_div5aMes">Oct</div></div><div class="POR_div5aT gris"><div class="POR_div5aT2"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14365" target="_self" class="POR_div5aTit">Finaliza el proyecto quinquenal en el poblado costero del coll de Cala Morell</a></div><div class="POR_div5aTex gris">A lo largo de las tres primeras semanas de octubre se ha llevado a cabo una nueva campaña arqueológica en el poblado de navetas de Es Coll de cala Morell, centrada en la excavación de la denominada Alberca Sur. Esta depresión artificial forma parte de una estructura hidráulica única en la prehistoria balear, formada por un conjunto de dos depósitos para la recogida de agua de lluvia situados en el centro del promontorio.&nbsp;</div></div></div></div>
+            </div>
+        </div>
+    
+	</div>
+    <div id="Content1_Panel8" class="PLA_ntilla1">
+		
+        <div class="div1200">
+            <div class="PLA_ntilla">
+                <div class="PLA_titol2">Activitats relacionades</div>
+                <div class="POR_div4aDiv"><div class="POR_div4a"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14380" target="_self" class="POR_div4aFoto" style="background-image: url(https://www.menorcatalayotica.info/documents/Imatges/14380img2720231109101324.jpg);">&nbsp;</a><div class="POR_div4aData"><div class="POR_div4aDia">16</div><div class="POR_div4aMes">Nov</div></div><div class="POR_div4aT gris"><div class="POR_div4aT2"><div class="POR_div4aTip">Conferencia:</div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14380" target="_self" class="POR_div4aTit">El poblado de navetas de Es Coll de cala Morell. Resultados de 13 años de excavaciones (2011-2023)</a></div><div class="POR_div4aTex gris">Conferencia sobre el proyecto arqueológico del poblado de navetas de Es Coll de Cala Morell, a cargo de Damià Ramis (miembro del proyecto de investigación Entre Illes).</div></div></div><div class="POR_div4a"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14295" target="_self" class="POR_div4aFoto" style="background-image: url(https://www.menorcatalayotica.info/documents/Imatges/14295img2720231016122038.jpg);">&nbsp;</a><div class="POR_div4aData"><div class="POR_div4aDia">21</div><div class="POR_div4aMes">Oct</div></div><div class="POR_div4aT gris"><div class="POR_div4aT2"><div class="POR_div4aTip">Excursión:</div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=14295" target="_self" class="POR_div4aTit">Jornada de puertas abiertas en el Coll de Cala Morell </a></div><div class="POR_div4aTex gris">El equipo de investigadores del Proyecto Entre Illes organiza una visita guiada al poblado costero del Coll de Cala Morell este sábado, 21 de octubre, a las 11 h.</div></div></div><div class="POR_div4a"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=13738" target="_self" class="POR_div4aFoto" style="background-image: url(https://www.menorcatalayotica.info/documents/Imatges/13738img2720230515032032.png);">&nbsp;</a><div class="POR_div4aData"><div class="POR_div4aDia">03</div><div class="POR_div4aMes">Jun</div></div><div class="POR_div4aT gris"><div class="POR_div4aT2"><div class="POR_div4aTip">Excursión:</div><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=13738" target="_self" class="POR_div4aTit">"Som Talaiòtics?" visita Cala Morell</a></div><div class="POR_div4aTex gris">Excursión del programa ""Som Talaiòtics?" 2023 a Cala Morell, una iniciativa del Consell Insular de Menorca, el GOB y Amics del Museu de Menorca.</div></div></div></div>
+            </div>
+        </div>
+    
+	</div>
+    <div id="Content1_Panel1" class="PLA_ntilla2">
+		
+        <div class="div1200">
+            <div class="PLA_ntilla">
+                <div class="PLA_titol2">Projectes relacionats</div>
+                <div class="POR_div5aDiv"><div class="POR_div5a"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10837" target="_self" class="POR_div5aFoto" style="background-image: url(https://www.menorcatalayotica.info/documents/Imatges/10835img13.jpg);">&nbsp;</a><div class="POR_div5aT gris"><div class="POR_div5aT2"><a href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10837" target="_self" class="POR_div5aTit">Excavación arqueológica en el cabo costero del Coll Cala Morell</a></div><div class="POR_div5aTex gris"><a href="https://museudemanacor.com/es/investigacion/proyectos-que-llevamos-cabo/proyecto-entre-illes">PROYECTO ENTRE ILLES</a><br>
+<br>
+&nbsp; &nbsp;Insularidad, interacción con el exterior y complejidad social: los asentamientos costeros de la edad del bronce en las Islas Baleares.</div></div></div></div>
+            </div>
+        </div>
+    
+	</div>
+    
+    <div id="Content1_Panel6" class="PLA_ntilla1">
+		
+        <div class="div1200">
+            <div class="PLA_ntilla">
+                <div class="PLA_titol2"><span id="Content1_Label1">Enlaces relacionados</span></div>
+                <a href="https://ca.wikipedia.org/wiki/Poblat_de_Cala_Morell" target="_self" class="PLA_linkWEB">Wikipedia</a><br>
+            </div>
+        </div>
+    
+	</div>
+
+                            </div>
+                        </div></div></div>
+                        <div id="DIVbaix">
+
+<div class="DIVbaix0"><div class="div1200">
+    <div class="DIVbaix1tit"><span id="Baix1_Label2">¿Quiere estar informado de las últimas novedades?</span></div>
+    <a id="Baix1_HyperLink10" class="boton2" href="https://menorcatalayotica.ipzmarketing.com/f/mQ0NvajvCtQ" target="_blank">Suscríbete al boletín</a>
+</div></div>
+<div class="DIVbaix1"><div class="div1200">
+    <div class="DIVbaix1tit"><span id="Baix1_Label4">Comparte este contenido</span></div>
+    <a id="Baix1_HyperLink7" class="DIVbaix1link face" onclick="share(&#39;facebook.com&#39;)">&nbsp;</a>
+    <a id="Baix1_HyperLink8" class="DIVbaix1link twit" onclick="share(&#39;twitter.com&#39;)">&nbsp;</a>
+    <a id="Baix1_HyperLink9" class="DIVbaix1link what" onclick="share(&#39;whatsapp.com&#39;)">&nbsp;</a>
+</div></div>
+<div class="DIVbaix2"><div class="div1200">
+    <a href="https://www.cime.es/" target="_blank"><img src="./cala morell_files/logoCime.png" alt="Consell Insular de Menorca"></a>
+    <a href="https://www.caib.es/" target="_blank"><img src="./cala morell_files/logoGoib3.png" alt="Govern Illes Balears"></a>
+    <a href="https://www.unesco.org/es" target="_blank"><img src="./cala morell_files/logoUnesco.png" alt="Unesco"></a>
+    <a href="https://www.menorcabiosfera.org/" target="_blank"><img src="./cala morell_files/logoBiosfera.png" alt="Menorca Reserva de Biosfera"></a>
+</div></div>
+<div class="DIVbaix3"><div class="div1200">
+    <div id="Baix1_Panel1" class="DIVbaix3b">
+		
+        <span id="Baix1_Label1">MENORCA TALAYÓTICA</span><br>
+        Departament de Cultura i Educació - Consell insular de Menorca<br>
+        Pl. Biosfera, 5 - 07703 Maó<br>
+        info@menorcatalayotica.info
+    
+	</div><div class="DIVbaixLinks3">
+        <a id="Baix1_HyperLink1" href="https://www.menorcatalayotica.info/portal.aspx">INICIO</a>&nbsp;&nbsp;|&nbsp;
+        <a id="Baix1_HyperLink2" href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10589">CONTACTAR</a>&nbsp;&nbsp;|&nbsp;
+        <a id="Baix1_HyperLink6" href="https://www.menorcatalayotica.info/Contingut.aspx?IdPub=12964">AVISO LEGAL</a>&nbsp;&nbsp;|&nbsp;
+        <a id="Baix1_HyperLink3" href="https://validator.w3.org/nu/?doc=https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10699" target="_blank">XHTML 1.0</a>&nbsp;&nbsp;|&nbsp;
+        <a id="Baix1_HyperLink4" href="https://jigsaw.w3.org/css-validator/validator?uri=https://www.menorcatalayotica.info/Contingut.aspx?IdPub=10699&amp;profile=css3svg&amp;usermedium=all&amp;warning=1&amp;vextwarning=&amp;lang=es" target="_blank">CSS 3</a>&nbsp;&nbsp;|&nbsp;
+        <a id="Baix1_HyperLink5" href="https://www.menorcatalayotica.info/Publicacions/rss.aspx?tipo=02" target="_blank">RSS</a>
+    </div>
+</div></div>
+
+</div>
+                    </div>
+                </div>
+            </div>
+        
+</div>
+    
+<script type="text/javascript">iniLon=3.882500;iniLat=40.057584;iniMapa(3.882500,40.057584,16);</script></form>
+    <noscript><div class="nojava">Su navegador no acepta javascript</div></noscript>
+
+
+<div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; width: 0px; height: 0px;"><div></div></div></div></body></html>
