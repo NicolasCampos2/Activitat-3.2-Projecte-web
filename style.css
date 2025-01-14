@@ -1,0 +1,202 @@
+body {
+    background-color: #fffacd;
+    margin: 0px;
+    padding: 0;
+    font-family:'Times New Roman', Times, serif;
+}
+
+
+img {
+    width: 200px;
+    height: auto;
+}
+#user{
+    width: 50px;
+    height: auto;    
+    margin-top: 120%;
+    transition: transform 0.8s ease;
+}
+#user:hover{
+    transform: scale(1.1);
+}
+
+
+.header {
+    display: flex;
+    justify-content: space-around;
+
+}
+
+nav {
+    margin: 0%;
+    display: flex;
+}
+h1{
+    font-size: 80px;
+    color: #936737;
+    text-align: center;
+}
+
+#navegador {
+    text-decoration: none;
+    font-size: 45px;
+    margin-top: 10%;
+    color: #a67847;
+    transition: transform 0.8s ease;
+}
+#municipio{
+    text-decoration: none;
+    font-size: 45px;
+    margin-top: 30%;
+    margin-left: 5%;
+    color: #a67847 ;
+    transition: transform 0.8s ease;
+    
+
+}
+
+#navegador:hover {
+    text-decoration: underline;
+    
+    transform: scale(1.1);
+}
+#municipio:hover {
+    text-decoration: underline;
+
+    transform: scale(1.1);
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin-top: 10%;
+    margin-left: 5%;
+    transition: transform 0.8s ease;
+    
+}
+ul:hover{
+    text-decoration: underline;
+    color: white;
+    transform: scale(1.1);
+}
+
+li {
+    position: relative;
+}
+
+.submenu {
+    margin-top: 0%;
+    display: none;
+    position: absolute;
+    left: 0;
+    background-color: #333;
+    border-radius: 5px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    min-width: 200px;
+   
+}
+
+li:hover .submenu {
+    display: block;
+}
+
+.submenu li {
+    padding: 8px;
+}
+
+.submenu li a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 8px 10px;
+}
+
+.submenu li a:hover {
+    background-color: #575757;
+}
+tr{
+    display: flex;
+
+}
+
+td{
+    height: 350px;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    text-align: center;
+    box-shadow: 10px 10px 15px  gray;
+    background-color: #bb8043;
+    padding: 2%;
+    border-radius: 5px;
+    margin: 2%;
+    transition: transform 0.8s ease;
+}
+
+
+
+td:hover {
+    transform: scale(1.1);
+}
+
+#visita {
+    font-size: 25px;
+    background-color: wheat;
+    padding: 2%;
+    border-radius: 4px;
+    color: black;
+    text-decoration: none;
+    margin-top: 5%;
+}
+
+#fotos {
+    width: 200px;
+    height: auto;
+}
+#texto{
+    font-size: 20px;
+    color: #af804f;
+}
+
+p {
+    display: flex;
+    text-align: center;
+}
+#mapa{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imagen_pleta{
+    display: flex;
+    justify-content: center;
+}
+#sa_pleta{
+   width: 600px;
+   height: auto;
+}
+
+
+footer {
+    margin-top: 2%;
+    display: flex;
+    justify-content: center;
+    background: lightgray;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+
+
+
+
+
+
+
+
